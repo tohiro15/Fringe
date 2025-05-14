@@ -26,12 +26,12 @@ public class Player : MonoBehaviour
     {
         _currentStategy = Input.GetKey(KeyCode.LeftShift) ? _runStrategy : _walkStrategy;
 
-        _rotatable?.Rotate();
     }
 
     private void FixedUpdate()
     {
         _currentStategy?.Move(_rb, transform);
+        _rotatable?.Rotate(_rb);
     }
 
 }

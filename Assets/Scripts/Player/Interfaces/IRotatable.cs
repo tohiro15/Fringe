@@ -1,4 +1,6 @@
+using UnityEngine;
+
 public interface IRotatable
 {
-    void Rotate();
+    void Rotate(Rigidbody rb);
 }
