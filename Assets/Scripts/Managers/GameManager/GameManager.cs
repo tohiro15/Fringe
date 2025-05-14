@@ -25,7 +25,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Game Started");
+
         SetGameState(GameState.Playing);
+        LockCursor();
     }
 
     public void SetGameState(GameState newState)

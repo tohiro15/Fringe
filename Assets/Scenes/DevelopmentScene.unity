@@ -2010,8 +2010,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1828321548}
   - component: {fileID: 1828321549}
-  - component: {fileID: 1828321550}
   - component: {fileID: 1828321547}
+  - component: {fileID: 1828321550}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2090,9 +2090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 330585545}
-  _sensitivity: 3
-  _maxX: 90
-  _minX: -90
+  _sensitivity: 200
 --- !u!1 &1967311851
 GameObject:
   m_ObjectHideFlags: 0

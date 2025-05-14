@@ -5,14 +5,14 @@ public class MouseController : MonoBehaviour, IRotatable
     [SerializeField] private Camera _camera;
     [SerializeField] private float _sensitivity = 200f;
 
-    [SerializeField] private float _maxX = 90f;
-    [SerializeField] private float _minX = -90f;
+    private float _maxX = 90f;
+    private float _minX = -90f;
 
     private float _xRotation;
     public void Rotate()
     {
-        float mouseX = Input.GetAxis("Mouse X") * _sensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * _sensitivity;
+        float mouseX = Input.GetAxis("Mouse X") * _sensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * _sensitivity * Time.deltaTime;
 
         _xRotation -= mouseY;
         _xRotation = Mathf.Clamp(_xRotation, _minX, _maxX);

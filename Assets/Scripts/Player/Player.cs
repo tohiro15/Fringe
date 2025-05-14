@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     private IMovementStrategy _walkStrategy;
     private IMovementStrategy _runStrategy;
 
-
     private IRotatable _rotatable;
     private void Start()
     {
@@ -32,7 +31,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _currentStategy.Move(_rb, transform);
+        _currentStategy?.Move(_rb, transform);
     }
 
 }
