@@ -2,15 +2,37 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private MouseController _mouseController;
+
+    [SerializeField] private Rigidbody _rb;
+
+    private IMovementStrategy _currentStategy;
+    private IMovementStrategy _walkStrategy;
+    private IMovementStrategy _runStrategy;
+
+
+    private IRotatable _rotatable;
+    private void Start()
     {
-        
+        _rb = GetComponent<Rigidbody>();
+
+        _walkStrategy = new WalkMovement(5f);
+        _runStrategy = new RunMovement(8f);
+        _currentStategy = _walkStrategy;
+
+        _rotatable = _mouseController;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        _currentStategy = Input.GetKey(KeyCode.LeftShift) ? _runStrategy : _walkStrategy;
+
+        _rotatable?.Rotate();
     }
+
+    private void FixedUpdate()
+    {
+        _currentStategy.Move(_rb, transform);
+    }
+
 }
