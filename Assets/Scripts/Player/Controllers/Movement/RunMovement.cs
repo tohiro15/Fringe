@@ -14,7 +14,8 @@ public class RunMovement : IMovementStrategy
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 direction = (transform.forward * z + transform.right * x) * _speed * Time.deltaTime;
+        Vector3 input = transform.forward * z + transform.right * x;
+        Vector3 direction = input.normalized * _speed * Time.deltaTime;
         rb.MovePosition(rb.position + direction);
     }
 }
