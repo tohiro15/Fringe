@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Rigidbody _rb;
 
+    [SerializeField] private float gravityMultiplier = 2f;
+
     private IMovementStrategy _currentStategy;
     private IMovementStrategy _walkStrategy;
     private IMovementStrategy _runStrategy;
@@ -25,11 +27,14 @@ public class Player : MonoBehaviour
     private void Update()
     {
         _currentStategy = Input.GetKey(KeyCode.LeftShift) ? _runStrategy : _walkStrategy;
-
+        _rotatable?.HandleInput();
     }
 
     private void FixedUpdate()
     {
+        Vector3 extraGravity = Physics.gravity * (gravityMultiplier - 1);
+        _rb.AddForce(extraGravity, ForceMode.Acceleration);
+
         _currentStategy?.Move(_rb, transform);
         _rotatable?.Rotate(_rb);
     }
