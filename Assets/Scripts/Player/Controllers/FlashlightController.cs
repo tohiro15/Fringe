@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FlashlightController : MonoBehaviour, IFlashlight
 {
-    private bool _isOn = false;
+    private bool _isOn = true;
     public event Action OnFlashlightToggled;
 
 
