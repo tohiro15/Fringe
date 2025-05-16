@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class AE_Door : MonoBehaviour
@@ -9,7 +10,7 @@ public class AE_Door : MonoBehaviour
     public float DoorOpenAngle = 87.0f;//угол вращения 
     private Vector3 defaulRot;
     private Vector3 openRot;
-    public Text txt;//text 
+    public TextMeshProUGUI txt;//text 
     // Start is called before the first frame update
     void Start()
     {
