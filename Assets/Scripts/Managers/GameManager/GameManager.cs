@@ -5,8 +5,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public GameState CurrentState { get; private set; }
+    [SerializeField] private SoundManager _soundManager;
 
+    public ISound Sound => _sound;
+
+    private ISound _sound;
+    public GameState CurrentState { get; private set; }
     public bool IsCursorLocked { get; private set; }
 
     public event Action<GameState> OnGameStateChanged;
@@ -25,6 +29,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (_soundManager == null)
+        {
+            Debug.LogError("SoundManager not assigned!");
+            return;
+        }
+
+        _sound = _soundManager;
+
         Debug.Log("Game Started");
 
         SetGameState(GameState.Playing);
@@ -48,7 +60,6 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
         IsCursorLocked = true;
     }
 
@@ -56,7 +67,6 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-
         IsCursorLocked = false;
     }
 }

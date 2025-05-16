@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mouseController: {fileID: 2982184192089353689}
+  _flashController: {fileID: 497225128223122420}
   _rb: {fileID: 0}
   gravityMultiplier: 2
 --- !u!114 &2982184192089353689
@@ -398,7 +399,7 @@ MonoBehaviour:
   topDown2DMode: 0
   useSpeedCheck: 1
   minSpeed: 1
-  runSpeed: 7
+  runSpeed: 5
   sprintSpeed: 11
   autoPlay: 1
   walkTimeout: 0.65
@@ -628,11 +629,33 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6374411400390662758, guid: ca5e050bc42abeb4d87fb36d65d5bc95,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 497225128223122420}
     - targetCorrespondingSourceObject: {fileID: 6839996454481885450, guid: ca5e050bc42abeb4d87fb36d65d5bc95,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1686568549492767806}
   m_SourcePrefab: {fileID: 100100000, guid: ca5e050bc42abeb4d87fb36d65d5bc95, type: 3}
+--- !u!1 &241884846617093323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6374411400390662758, guid: ca5e050bc42abeb4d87fb36d65d5bc95,
+    type: 3}
+  m_PrefabInstance: {fileID: 6569957569833811629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &497225128223122420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241884846617093323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff6bfe02fe389c4aa9af9a559c22a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &414789734360401831 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6839996454481885450, guid: ca5e050bc42abeb4d87fb36d65d5bc95,
