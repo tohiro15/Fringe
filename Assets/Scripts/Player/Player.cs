@@ -4,10 +4,10 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private MouseController _mouseController;
     [SerializeField] private FlashlightController _flashController;
+    [SerializeField] private AnimationController _animationController;
 
     [SerializeField] private Rigidbody _rb;
-
-    [SerializeField] private float gravityMultiplier = 2f;
+    [SerializeField] private Animator _playerAnimator;
 
     private IMovementStrategy _currentStategy;
     private IMovementStrategy _walkStrategy;
@@ -15,16 +15,19 @@ public class Player : MonoBehaviour
 
     private IRotatable _rotatable;
     private IFlashlight _flashlight;
+    private IAnimation _animation;
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
 
-        _walkStrategy = new WalkMovement(4f);
-        _runStrategy = new RunMovement(6f);
-        _currentStategy = _walkStrategy;
-
         _rotatable = _mouseController;
         _flashlight = _flashController;
+        _animation = _animationController;
+
+        _walkStrategy = new WalkMovement(_animation, 2f);
+        _runStrategy = new RunMovement(_animation, 5f);
+        _currentStategy = _walkStrategy;
+
     }
 
     private void Update()
@@ -41,7 +44,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 extraGravity = Physics.gravity * (gravityMultiplier - 1);
+        Vector3 extraGravity = Physics.gravity * (2f - 1);
         _rb.AddForce(extraGravity, ForceMode.Acceleration);
 
         _currentStategy?.Move(_rb, transform);

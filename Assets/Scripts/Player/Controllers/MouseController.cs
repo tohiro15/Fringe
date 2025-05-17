@@ -24,6 +24,4 @@ public class MouseController : MonoBehaviour, IRotatable
 
         rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, _mouseX, 0f));
     }
-
-
 }
