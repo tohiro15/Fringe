@@ -3,7 +3,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private MouseController _mouseController;
-    [SerializeField] private FlashlightController _flashController;
+    [SerializeField] private JumpController _jumpController;
+    [SerializeField] private FlashlightController _flashlightController;
     [SerializeField] private AnimationController _animationController;
 
     [SerializeField] private Rigidbody _rb;
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
     private IMovementStrategy _runStrategy;
 
     private IRotatable _rotatable;
+    private IJump _jump;
     private IFlashlight _flashlight;
     private IAnimation _animation;
     private void Start()
@@ -21,7 +23,8 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
 
         _rotatable = _mouseController;
-        _flashlight = _flashController;
+        _jump = _jumpController;
+        _flashlight = _flashlightController;
         _animation = _animationController;
 
         _walkStrategy = new WalkMovement(_animation, 2f);
@@ -38,10 +41,10 @@ public class Player : MonoBehaviour
 
         _rotatable?.HandleInput();
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            _flashlight?.ToggleFlashlight();
-        }
+        _jump?.HandleInput(_rb);
+
+        _flashlight?.HandleInput();
+
     }
 
     private void FixedUpdate()
@@ -50,6 +53,8 @@ public class Player : MonoBehaviour
 
         Vector3 extraGravity = Physics.gravity * (2f - 1);
         _rb.AddForce(extraGravity, ForceMode.Acceleration);
+
+        _jump?.CheckGround();
 
         _currentStategy?.Move(_rb, transform);
         _rotatable?.Rotate(_rb);
