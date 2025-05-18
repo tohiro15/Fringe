@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private MouseController _mouseController;
     [SerializeField] private JumpController _jumpController;
+    [SerializeField] private CrouchController _crouchController;
     [SerializeField] private FlashlightController _flashlightController;
     [SerializeField] private AnimationController _animationController;
 
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
 
     private IRotatable _rotatable;
     private IJump _jump;
+    private ICrouch _crouch;
     private IFlashlight _flashlight;
     private IAnimation _animation;
     private void Start()
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour
 
         _rotatable = _mouseController;
         _jump = _jumpController;
+        _crouch = _crouchController;
         _flashlight = _flashlightController;
         _animation = _animationController;
 
@@ -31,17 +34,33 @@ public class Player : MonoBehaviour
         _runStrategy = new RunMovement(_animation, 5f);
         _currentStategy = _walkStrategy;
 
+        _crouch?.Init(_mouseController.GetCamera(), _animation);
+
     }
 
     private void Update()
     {
         if (GameManager.Instance.CurrentState != GameState.Playing) return;
 
-        _currentStategy = Input.GetKey(KeyCode.LeftShift) ? _runStrategy : _walkStrategy;
+        if (_crouch != null && _crouch.GetWantsToStant())
+        {
+            _currentStategy = _walkStrategy;
+        }
+        else if (Input.GetKey(KeyCode.LeftShift))
+        {
+            _currentStategy = _runStrategy;
+        }
+        else
+        {
+            _currentStategy = _walkStrategy;
+        }
+
 
         _rotatable?.HandleInput();
 
         _jump?.HandleInput(_rb);
+
+        _crouch?.HandleInput();
 
         _flashlight?.HandleInput();
 

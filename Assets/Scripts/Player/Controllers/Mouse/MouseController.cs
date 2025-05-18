@@ -9,6 +9,7 @@ public class MouseController : MonoBehaviour, IRotatable
 
     private float _mouseX;
     private float _mouseY;
+    public Camera GetCamera() => _camera;
     public void HandleInput()
     {
         if (GameManager.Instance.CurrentState != GameState.Playing) return;

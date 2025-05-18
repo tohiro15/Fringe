@@ -21,4 +21,14 @@ public class AnimationController : MonoBehaviour, IAnimation
         _animator.SetBool("isWalking", false);
         _animator.SetBool("isRunning", true);
     }
+
+    public void PlayIdleCrouch()
+    {
+        _animator.SetBool("isCrouch", true);
+    }
+
+    public void StopCrouch()
+    {
+        _animator.SetBool("isCrouch", false);
+    }
 }
