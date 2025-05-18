@@ -4,17 +4,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
-    [SerializeField] private SoundManager _soundManager;
-
-    public ISound Sound => _sound;
-
-    private ISound _sound;
-    public GameState CurrentState { get; private set; }
-    public bool IsCursorLocked { get; private set; }
-
-    public event Action<GameState> OnGameStateChanged;
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,6 +15,15 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
+    [SerializeField] private SoundManager _soundManager;
+    public ISound Sound => _sound;
+
+    private ISound _sound;
+    public GameState CurrentState { get; private set; }
+    public bool IsCursorLocked { get; private set; }
+
+    public event Action<GameState> OnGameStateChanged;
 
     private void Start()
     {

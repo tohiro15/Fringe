@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.CurrentState != GameState.Playing) return;
+
         _currentStategy = Input.GetKey(KeyCode.LeftShift) ? _runStrategy : _walkStrategy;
 
         _rotatable?.HandleInput();
@@ -44,6 +46,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.CurrentState != GameState.Playing) return;
+
         Vector3 extraGravity = Physics.gravity * (2f - 1);
         _rb.AddForce(extraGravity, ForceMode.Acceleration);
 

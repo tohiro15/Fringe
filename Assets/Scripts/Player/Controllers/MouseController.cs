@@ -11,12 +11,16 @@ public class MouseController : MonoBehaviour, IRotatable
     private float _mouseY;
     public void HandleInput()
     {
+        if (GameManager.Instance.CurrentState != GameState.Playing) return;
+
         _mouseX = Input.GetAxis("Mouse X") * _sensitivity * Time.fixedDeltaTime;
         _mouseY = Input.GetAxis("Mouse Y") * _sensitivity * Time.fixedDeltaTime;
     }
 
     public void Rotate(Rigidbody rb)
     {
+        if (GameManager.Instance.CurrentState != GameState.Playing) return;
+
         _xRotation -= _mouseY;
         _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
