@@ -27,6 +27,9 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+
         _gameFlow = _gameFlowController;
 
         _mainMenuUI = _mainMenuUIManager;
@@ -34,6 +37,7 @@ public class MainMenuManager : MonoBehaviour
         _mainMenuSound = _mainMenuSoundManager;
 
         _mainMenuUI?.Init(_settings, _gameFlow);
+
     }
 
     public IGameFlow GetGameFlow()
