@@ -15,6 +15,18 @@ public class MainMenuManager : MonoBehaviour
 
         Instance = this;
     }
+
+    [SerializeField] private MenuUIManager _mainMenuUIManager;
+    [SerializeField] private MenuSoundManager _mainMenuSoundManager;
+
+    private IMainMenuUI _mainMenuUI;
+    private IMainMenuSound _mainMenuSound;
+
+    private void Start()
+    {
+        _mainMenuUI = _mainMenuUIManager;
+        _mainMenuSound = _mainMenuSoundManager;
+    }
     public void StartGame()
     {
         SceneManager.LoadScene(1);
