@@ -479,6 +479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8130701495991424515}
   - component: {fileID: 9004837456135782664}
+  - component: {fileID: 5042769799711177497}
   - component: {fileID: 3621239969730345321}
   - component: {fileID: 2918238683197908268}
   - component: {fileID: 2982184192089353689}
@@ -528,8 +529,22 @@ MonoBehaviour:
   _crouchController: {fileID: 2918238683197908268}
   _flashlightController: {fileID: 8574908377720213512}
   _animationController: {fileID: 2838946492767792767}
+  _doorInteractionController: {fileID: 5042769799711177497}
   _rb: {fileID: 0}
   _playerAnimator: {fileID: 4583297076473336785}
+--- !u!114 &5042769799711177497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890435818913106974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda48e2fccb9fdf40a9654dc83f72434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactDistance: 1.5
 --- !u!114 &3621239969730345321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,7 +590,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 2723691202150675020}
-  _sensitivity: 80
 --- !u!114 &2838946492767792767
 MonoBehaviour:
   m_ObjectHideFlags: 0

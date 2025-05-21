@@ -14,8 +14,8 @@ public class MouseController : MonoBehaviour, IRotatable
     {
         if (GameManager.Instance.CurrentState != GameState.Playing) return;
 
-        _mouseX = Input.GetAxis("Mouse X") * SettingsManager.Instance.GetSensitivity() * Time.fixedDeltaTime;
-        _mouseY = Input.GetAxis("Mouse Y") * SettingsManager.Instance.GetSensitivity() * Time.fixedDeltaTime;
+            _mouseX = Input.GetAxis("Mouse X") * SettingsManager.Instance.GetSensitivity() * Time.fixedDeltaTime;
+            _mouseY = Input.GetAxis("Mouse Y") * SettingsManager.Instance.GetSensitivity() * Time.fixedDeltaTime;
     }
 
     public void Rotate(Rigidbody rb)

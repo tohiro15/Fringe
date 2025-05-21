@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+
     }
 
     [SerializeField] private SoundManager _soundManager;

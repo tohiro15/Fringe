@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private CrouchController _crouchController;
     [SerializeField] private FlashlightController _flashlightController;
     [SerializeField] private AnimationController _animationController;
+    [SerializeField] private DoorInteractionController _doorInteractionController;
 
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Animator _playerAnimator;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     private ICrouch _crouch;
     private IFlashlight _flashlight;
     private IAnimation _animation;
+    private IDoor _door;
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -29,12 +31,14 @@ public class Player : MonoBehaviour
         _crouch = _crouchController;
         _flashlight = _flashlightController;
         _animation = _animationController;
+        _door = _doorInteractionController;
 
         _walkStrategy = new WalkMovement(_animation, 2f);
         _runStrategy = new RunMovement(_animation, 5f);
         _currentStategy = _walkStrategy;
 
         _crouch?.Init(_mouseController.GetCamera(), _animation);
+        _door?.Init(_mouseController.GetCamera());
 
     }
 
@@ -64,6 +68,7 @@ public class Player : MonoBehaviour
 
         _flashlight?.HandleInput();
 
+        _door?.FindDoor();
     }
 
     private void FixedUpdate()

@@ -56,6 +56,8 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
         _openControlSettingsButton?.onClick.AddListener(OpenControlSettings);
 
         _closeSettingsButton?.onClick.AddListener(CloseSettingsMenu);
+
+        OpenPanel(false, false, false);
     }
 
     public void OpenPanel(bool screen, bool sound, bool control)
