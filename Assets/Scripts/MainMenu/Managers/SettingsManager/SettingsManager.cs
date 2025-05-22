@@ -17,7 +17,8 @@ public class SettingsManager : MonoBehaviour, ISettings
         DontDestroyOnLoad(gameObject);
     }
 
-    [SerializeField] private AudioMixer _mainAudioMixer;
+    [SerializeField] private AudioMixer _SFXAudioMixer;
+    [SerializeField] private AudioMixer _musicAudioMixer;
 
     private int _currentResolutionIndex;
     private int _currentQualityLevel;
@@ -30,6 +31,9 @@ public class SettingsManager : MonoBehaviour, ISettings
     {
         _currentQualityLevel = QualitySettings.GetQualityLevel();
         GetCurrentResolution();
+
+        if (_SFXAudioMixer == null) Debug.LogError("Микшер SFX - не инициализирован!");
+        if (_musicAudioMixer == null) Debug.LogError("Микшер Music - не инициализирован!");
     }
 
     #region QualitySettings
@@ -90,22 +94,40 @@ public class SettingsManager : MonoBehaviour, ISettings
     }
     #endregion
     #region VolumeSettings
-    public void ChangeVolume(float value)
+    public void ChangeSFXVolume(float value)
     {
-        if (_mainAudioMixer == null) return;
+        if (_SFXAudioMixer == null) return;
 
         float volumePercent = Mathf.Clamp(value, 0.0001f, 100f);
         float dB = Mathf.Log10(volumePercent / 100f) * 40f;
-        _mainAudioMixer.SetFloat("MainVolume", dB);
+        _SFXAudioMixer.SetFloat("MainVolume", dB);
     }
 
-    public float GetVolume()
+    public void ChangeMusicVolume(float value)
     {
-        _mainAudioMixer.GetFloat("MainVolume", out float dBValue);
+        if (_musicAudioMixer == null) return;
+
+        float volumePercent = Mathf.Clamp(value, 0.0001f, 100f);
+        float dB = Mathf.Log10(volumePercent / 100f) * 40f;
+        _musicAudioMixer.SetFloat("MainVolume", dB);
+    }
+
+    public float GetSFXVolume()
+    {
+        _SFXAudioMixer.GetFloat("MainVolume", out float dBValue);
         float volumePercent = Mathf.Pow(10f, dBValue / 40f) * 100f;
 
         return volumePercent;
     }
+
+    public float GetMusicVolume()
+    {
+        _musicAudioMixer.GetFloat("MainVolume", out float dBValue);
+        float volumePercent = Mathf.Pow(10f, dBValue / 40f) * 100f;
+
+        return volumePercent;
+    }
+
     #endregion
     #region MouseSensitivitySettings
     public void ChangeSensitivity(float newSensitivity)

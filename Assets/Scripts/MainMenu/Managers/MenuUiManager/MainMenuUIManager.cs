@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,18 +19,18 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
     [Header("Controllers")]
 
     [SerializeField] private ScreenSettingsUI _screenSettingsUI;
-    [SerializeField] private SoundSettingsUI _soundSettingsUI;
+    [SerializeField] private QualitySettingsUI _qualitySettingsUI;
+    [SerializeField] private SoundSettingsUI[] _soundSettingsUI;
     [SerializeField] private ControlSettingsUI _controlSettingsUI;
 
     [Header("Canvases")]
 
+    [SerializeField] private Canvas _mainMenuCanvas;
     [SerializeField] private Canvas _settingsCanvas;
 
-    [Header("Buttons")]
+    [Header("Settings Sections")]
 
-    [SerializeField] private Button _openScreenSettingsButton;
-    [SerializeField] private Button _openSoundSettingsButton;
-    [SerializeField] private Button _openControlSettingsButton;
+    [SerializeField] private List<SettingsSection> _settingsSections;
 
     [Space]
 
@@ -37,71 +38,85 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
 
     [Header("Text")]
     [SerializeField] private TMP_Text _screenButtonText;
+    [SerializeField] private TMP_Text _qualityButtonText;
     [SerializeField] private TMP_Text _soundButtonText;
     [SerializeField] private TMP_Text _controlButtonText;
+    private SettingsCategory _currentCategory;
+
     public void Init(ISettings settings, IGameFlow gameFlow)
     {
         if(_settingsCanvas != null) _settingsCanvas.gameObject.SetActive(false);
 
         _screenSettingsUI?.Init(settings);
-        _soundSettingsUI?.Init(settings);
+        _qualitySettingsUI?.Init(settings);
+
+        foreach (var soundSettings in _soundSettingsUI)
+        {
+            soundSettings.Init(settings);
+        }
+
         _controlSettingsUI?.Init(settings);
 
+        _startGameButton?.onClick.RemoveAllListeners();
         _startGameButton?.onClick.AddListener(gameFlow.StartGame);
+
+        _settingsButton?.onClick.RemoveAllListeners();
         _settingsButton?.onClick.AddListener(OpenSettingsMenu);
+
+        _quitGameButton?.onClick.RemoveAllListeners();
         _quitGameButton?.onClick.AddListener(gameFlow.QuitGame);
 
-        _openScreenSettingsButton?.onClick.AddListener(OpenScreenSettings);
-        _openSoundSettingsButton?.onClick?.AddListener(OpenSoundSettings);
-        _openControlSettingsButton?.onClick.AddListener(OpenControlSettings);
-
+        _closeSettingsButton?.onClick.RemoveAllListeners();
         _closeSettingsButton?.onClick.AddListener(CloseSettingsMenu);
 
-        OpenPanel(false, false, false);
-    }
-
-    public void OpenPanel(bool screen, bool sound, bool control)
-    {
-        _screenSettingsUI.gameObject.SetActive(screen);
-        _soundSettingsUI.gameObject.SetActive(sound);
-        _controlSettingsUI.gameObject.SetActive(control);
+        foreach (var section in _settingsSections)
+        {
+            SettingsCategory capturedCategory = section.Category;
+            section.Button?.onClick.AddListener(() => OpenSettings(capturedCategory));
+        }
     }
 
     public void OpenSettingsMenu()
     {
-        _settingsCanvas?.gameObject.SetActive(true);
+        SetCanvas(false, true);
+        OpenSettings(SettingsCategory.Screen);
     }
 
     public void CloseSettingsMenu()
     {
+        SetCanvas(true, false);
         _settingsCanvas?.gameObject.SetActive(false);
     }
 
-    public void OpenScreenSettings()
+    public void OpenSettings(SettingsCategory category)
     {
+        _currentCategory = category;
 
-        _screenButtonText.text = "<u>Ёкран</u>";
-        _soundButtonText.text = "«вук";
-        _controlButtonText.text = "”правление";
+        foreach (var section in _settingsSections)
+        {
+            bool isActive = section.Category == category;
 
-        OpenPanel(true, false, false);
+            section.Panel?.SetActive(isActive);
+            section.Label.text = isActive ? $"<u>{section.LabelName}</u>" : section.LabelName;
+        }
     }
-
-    public void OpenSoundSettings()
+    public void SetCanvas(bool main, bool settings)
     {
-        _screenButtonText.text = "Ёкран";
-        _soundButtonText.text = "<u>«вук</u>";
-        _controlButtonText.text = "”правление";
-
-        OpenPanel(false, true, false);
+        _mainMenuCanvas?.gameObject.SetActive(main);
+        _settingsCanvas?.gameObject.SetActive(settings);
     }
-
-    public void OpenControlSettings()
+    public void SetTextUnderlining(bool screenUnderline, bool qualityUnderline, bool soundUnderline, bool controlUnderline)
     {
-        _screenButtonText.text = "Ёкран";
-        _soundButtonText.text = "«вук";
-        _controlButtonText.text = "<u>”правление</u>";
+        if(screenUnderline) _screenButtonText.text = "<u>Ёкран</u>";
+        else _screenButtonText.text = "Ёкран";
 
-        OpenPanel(false, false, true);
+        if(qualityUnderline) _qualityButtonText.text = "<u>√рафика</u>";
+        else _qualityButtonText.text = "√рафика";
+
+        if (soundUnderline) _soundButtonText.text = "<u>«вук</u>";
+        else _soundButtonText.text = "«вук";
+
+        if(controlUnderline) _controlButtonText.text = "<u>”правление</u>";
+        else _controlButtonText.text = "”правление";
     }
 }

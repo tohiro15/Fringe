@@ -1,14 +1,20 @@
 public interface ISettings
 {
+    void ChangeSFXVolume(float value);
+    void ChangeMusicVolume(float value);
+
+    float GetSFXVolume();
+    float GetMusicVolume();
+
     void ChangeQuality(int index);
     int GetQualityLevel();
+
     void ChangeResolution(int index);
     int GetResolution();
-    void GetCurrentResolution();
+
     void ChangeWindowMode();
     bool GetIsWindowMode();
-    void ChangeVolume(float value);
-    float GetVolume();
-    void ChangeSensitivity(float newSensitivity);
+
+    void ChangeSensitivity(float value);
     float GetSensitivity();
 }

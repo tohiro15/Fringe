@@ -1,11 +1,10 @@
 public interface IMainMenuUI
 {
     void Init(ISettings settings, IGameFlow gameFlow);
-    void OpenPanel(bool screen, bool sound, bool control);
     void OpenSettingsMenu();
     void CloseSettingsMenu();
-    void OpenScreenSettings();
-    void OpenSoundSettings();
-    void OpenControlSettings();
+    void OpenSettings(SettingsCategory category);
+    void SetCanvas(bool main, bool settings);
+    void SetTextUnderlining(bool screenUnderline, bool qualityUnderline, bool soundUnderline, bool controlUnderline);
 
 }

@@ -8,7 +8,6 @@ public class ScreenSettingsUI : MonoBehaviour
     [SerializeField] private Button _windowModeButton;
     [SerializeField] private Image _windowModeEnableImage;
     [SerializeField] private TMP_Dropdown _resolutionDropdown;
-    [SerializeField] private TMP_Dropdown _qualityDropdown;
 
     private ISettings _settings;
 
@@ -20,9 +19,6 @@ public class ScreenSettingsUI : MonoBehaviour
 
         _windowModeEnableImage.gameObject.SetActive(_settings.GetIsWindowMode());
         _windowModeButton.onClick.AddListener(ChangeWindowMode);
-
-        if (_qualityDropdown != null && _settings != null) _qualityDropdown.value = _settings.GetQualityLevel();
-        _qualityDropdown?.onValueChanged.AddListener(_settings.ChangeQuality);
 
         if(_resolutionDropdown != null && _settings != null) _resolutionDropdown.value = _settings.GetResolution();
         _resolutionDropdown?.onValueChanged.AddListener(_settings.ChangeResolution);
