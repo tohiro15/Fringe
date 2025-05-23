@@ -3,15 +3,35 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum MenuState 
+{
+    Main, Chapter, Settings 
+}
+
 public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
 {
+    [Header("Canvases")]
+
+    [SerializeField] private Canvas _mainMenuCanvas;
+    [SerializeField] private Canvas _settingsCanvas;
+    [SerializeField] private Canvas _chapterSelectionCanvas;
+
     [Header("MainMenu")]
     [Space]
 
     [Header("Buttons")]
-    [SerializeField] private Button _startGameButton;
+    [SerializeField] private Button _chapterSelectionStartButton;
     [SerializeField] private Button _settingsButton;
     [SerializeField] private Button _quitGameButton;
+
+    [Header("Chapter Selection")]
+    [Space]
+
+    [Header("Buttons")]
+    [SerializeField] private string[] _chapterTitles;
+    [SerializeField] private Button[] _chapterSelectButtons;
+    [SerializeField] private Button _startGameButton;
+    [SerializeField] private Button _backButton;
 
     [Header ("Settings")]
     [Space]
@@ -23,10 +43,6 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
     [SerializeField] private SoundSettingsUI[] _soundSettingsUI;
     [SerializeField] private ControlSettingsUI _controlSettingsUI;
 
-    [Header("Canvases")]
-
-    [SerializeField] private Canvas _mainMenuCanvas;
-    [SerializeField] private Canvas _settingsCanvas;
 
     [Header("Settings Sections")]
 
@@ -41,7 +57,9 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
     [SerializeField] private TMP_Text _qualityButtonText;
     [SerializeField] private TMP_Text _soundButtonText;
     [SerializeField] private TMP_Text _controlButtonText;
+
     private SettingsCategory _currentCategory;
+    private int _selectedChapterIndex = -1;
 
     public void Init(ISettings settings, IGameFlow gameFlow)
     {
@@ -57,8 +75,8 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
 
         _controlSettingsUI?.Init(settings);
 
-        _startGameButton?.onClick.RemoveAllListeners();
-        _startGameButton?.onClick.AddListener(gameFlow.StartGame);
+        _chapterSelectionStartButton?.onClick.RemoveAllListeners();
+        _chapterSelectionStartButton?.onClick.AddListener(OpenChapterSelectionMenu);
 
         _settingsButton?.onClick.RemoveAllListeners();
         _settingsButton?.onClick.AddListener(OpenSettingsMenu);
@@ -69,22 +87,97 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
         _closeSettingsButton?.onClick.RemoveAllListeners();
         _closeSettingsButton?.onClick.AddListener(CloseSettingsMenu);
 
+        for (int i = 0; i < _chapterSelectButtons.Length; i++)
+        {
+            int index = i;
+            _chapterSelectButtons[i]?.onClick.RemoveAllListeners();
+            _chapterSelectButtons[i]?.onClick.AddListener(() =>
+            {
+                SelectChapter(index);
+            });
+        }
+
+        if (_startGameButton != null) _startGameButton.interactable = false;
+
+        _startGameButton?.onClick.RemoveAllListeners();
+        _startGameButton?.onClick.AddListener(() =>
+        {
+            if (MainMenuManager.Instance.GetGameFlow().GetChapterIndex() >= 0)
+            {
+                MainMenuManager.Instance.GetGameFlow().StartGame();
+            }
+        });
+
+        _backButton?.onClick.RemoveAllListeners();
+        _backButton?.onClick.AddListener(CloseChapterSelectionMenu);
+
         foreach (var section in _settingsSections)
         {
             SettingsCategory capturedCategory = section.Category;
             section.Button?.onClick.AddListener(() => OpenSettings(capturedCategory));
         }
+
+        SetCanvas(MenuState.Main);
+        InitializeChapterTitles();
+    }
+
+    public void OpenChapterSelectionMenu()
+    {
+        SetCanvas(MenuState.Chapter);
+    }
+
+    public void CloseChapterSelectionMenu()
+    {
+        SetCanvas(MenuState.Main);
+    }
+    public void SelectChapter(int index)
+    {
+        _selectedChapterIndex = index;
+
+        MainMenuManager.Instance.GetGameFlow().SetChapterIndex(index + 1);
+
+        if (_startGameButton != null)
+            _startGameButton.interactable = true;
+
+        for (int i = 0; i < _chapterSelectButtons.Length; i++)
+        {
+            TMP_Text textComponent = _chapterSelectButtons[i].GetComponentInChildren<TMP_Text>();
+            if (textComponent != null)
+            {
+                string label = _chapterTitles != null && i < _chapterTitles.Length
+                    ? $"ГЛАВА \"{_chapterTitles[i]}\""
+                    : $"ГЛАВА - {i + 1}";
+
+                textComponent.text = (i == index) ? $"<u>{label}</u>" : label;
+            }
+        }
+    }
+
+    public void InitializeChapterTitles()
+    {
+        for (int i = 0; i < _chapterSelectButtons.Length; i++)
+        {
+            TMP_Text textComponent = _chapterSelectButtons[i].GetComponentInChildren<TMP_Text>();
+            if (textComponent != null)
+            {
+                string label = _chapterTitles != null && i < _chapterTitles.Length
+                    ? $"ГЛАВА \"{_chapterTitles[i]}\""
+                    : $"ГЛАВА - {i + 1}";
+
+                textComponent.text = label;
+            }
+        }
     }
 
     public void OpenSettingsMenu()
     {
-        SetCanvas(false, true);
+        SetCanvas(MenuState.Settings);
         OpenSettings(SettingsCategory.Screen);
     }
 
     public void CloseSettingsMenu()
     {
-        SetCanvas(true, false);
+        SetCanvas(MenuState.Main);
         _settingsCanvas?.gameObject.SetActive(false);
     }
 
@@ -100,23 +193,11 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
             section.Label.text = isActive ? $"<u>{section.LabelName}</u>" : section.LabelName;
         }
     }
-    public void SetCanvas(bool main, bool settings)
+    public void SetCanvas(MenuState state)
     {
-        _mainMenuCanvas?.gameObject.SetActive(main);
-        _settingsCanvas?.gameObject.SetActive(settings);
+        _mainMenuCanvas?.gameObject.SetActive(state == MenuState.Main);
+        _chapterSelectionCanvas?.gameObject.SetActive(state == MenuState.Chapter);
+        _settingsCanvas?.gameObject.SetActive(state == MenuState.Settings);
     }
-    public void SetTextUnderlining(bool screenUnderline, bool qualityUnderline, bool soundUnderline, bool controlUnderline)
-    {
-        if(screenUnderline) _screenButtonText.text = "<u>Экран</u>";
-        else _screenButtonText.text = "Экран";
 
-        if(qualityUnderline) _qualityButtonText.text = "<u>Графика</u>";
-        else _qualityButtonText.text = "Графика";
-
-        if (soundUnderline) _soundButtonText.text = "<u>Звук</u>";
-        else _soundButtonText.text = "Звук";
-
-        if(controlUnderline) _controlButtonText.text = "<u>Управление</u>";
-        else _controlButtonText.text = "Управление";
-    }
 }

@@ -2111,7 +2111,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 9995
+  m_VersionIndex: 10004
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6153,7 +6153,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4867
+  m_VersionIndex: 4876
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -13100,6 +13100,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7172510960713078506, guid: edec47ad7ee7d7a479ac02f8d88fe680,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172510960713078506, guid: edec47ad7ee7d7a479ac02f8d88fe680,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172510960713078506, guid: edec47ad7ee7d7a479ac02f8d88fe680,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -49.371605
       objectReference: {fileID: 0}
@@ -20042,6 +20052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HP_Cell_Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 5924133622321654496, guid: 998ea4ddc067f2849afb62b4e96a8da8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 6698480622138202916, guid: 998ea4ddc067f2849afb62b4e96a8da8,
         type: 3}
@@ -77294,6 +77309,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HP_Lamp_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345024742987428274, guid: 9e4de59386540ae4f94846a577cfde41,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.197
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
