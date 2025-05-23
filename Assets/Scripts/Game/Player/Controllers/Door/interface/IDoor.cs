@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public interface IDoor
 {
-    void Init(Camera playerCamera);
+    void Init(InputActionAsset inputAction, InputAction interactAction, Camera playerCamera);
     void FindDoor();
 }

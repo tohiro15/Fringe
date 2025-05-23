@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DoorInteractionController : MonoBehaviour, IDoor
 {
@@ -7,8 +8,13 @@ public class DoorInteractionController : MonoBehaviour, IDoor
 
     private Camera _playerCamera;
 
-    public void Init(Camera playerCamera)
+    private InputActionAsset _inputAction;
+    private InputAction _interactAction;
+
+    public void Init(InputActionAsset inputAction, InputAction interactAction,  Camera playerCamera)
     {
+        _inputAction = inputAction;
+        _interactAction = interactAction;
         _playerCamera = playerCamera;
     }
 
@@ -23,7 +29,7 @@ public class DoorInteractionController : MonoBehaviour, IDoor
             {
                 UIManager.Instance.UpdateInteractionText(true);
 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && _inputAction == null || _interactAction.WasPressedThisFrame())
                 {
                     Door door = hitTransform.GetComponent<Door>();
                     door?.Interact();

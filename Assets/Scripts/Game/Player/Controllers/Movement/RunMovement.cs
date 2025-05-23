@@ -1,29 +1,53 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RunMovement : IMovementStrategy
 {
     private float _speed;
     private IAnimation _animation;
 
-    public RunMovement(IAnimation animation, float speed)
+    private Rigidbody _rigidbody;
+
+    private InputActionAsset _inputActions;
+    private InputAction _moveAction;
+
+    private Vector2 _moveAmt;
+
+    public RunMovement(InputActionAsset inputActions, InputAction moveAction, IAnimation animation, Rigidbody rigidbody, float speed)
     {
+        _inputActions = inputActions;
+        _moveAction = moveAction;
+
         _animation = animation;
+        _rigidbody = rigidbody;
         _speed = speed;
     }
 
     public float GetSpeed() => _speed;
 
-    public void Move(Rigidbody rb, Transform transform)
+    public void Move(Transform transform)
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
+        if (_inputActions == null && _moveAction == null)
+        {
+            float x = Input.GetAxisRaw("Horizontal");
+            float z = Input.GetAxisRaw("Vertical");
 
-        Vector3 input = transform.forward * z + transform.right * x;
-        Vector3 direction = input.normalized * _speed * Time.deltaTime;
+            Vector3 input = transform.forward * z + transform.right * x;
+            Vector3 direction = input.normalized * _speed * Time.deltaTime;
+            _rigidbody.MovePosition(_rigidbody.position + direction);
 
-        rb.MovePosition(rb.position + direction);
+            HandleAnimation(input);
+        }
+        else
+        {
+            _moveAmt = _moveAction.ReadValue<Vector2>();
 
-        HandleAnimation(input);
+            Vector3 input = transform.forward * _moveAmt.y + transform.right * _moveAmt.x;
+            Vector3 direction = input.normalized * _speed * Time.deltaTime;
+            _rigidbody.MovePosition(_rigidbody.position + direction);
+
+            HandleAnimation(input);
+        }
     }
 
     public void HandleAnimation(Vector3 inputDirection)

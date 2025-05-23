@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public interface ICrouch
 {
+    void Init(InputActionAsset inputAction, InputAction crouchAction, Camera playerCamera, IAnimation animation);
     bool GetIsCrouching();
     bool GetWantsToStant();
-    void Init(Camera playerCamera, IAnimation animation);
     void HandleInput();
     void Crouch();
     void StandUp();

@@ -524,6 +524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b5f206a41541848a82a332e3abd6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputAction: {fileID: -944628639613478452, guid: e6ca3bbb04e964f40a75d7e20657a26a,
+    type: 3}
   _mouseController: {fileID: 2982184192089353689}
   _jumpController: {fileID: 3621239969730345321}
   _crouchController: {fileID: 2918238683197908268}

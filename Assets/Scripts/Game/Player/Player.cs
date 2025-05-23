@@ -1,7 +1,16 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
+    [SerializeField] private InputActionAsset _inputAction;
+    private InputAction _moveAction;
+    private InputAction _lookAction;
+    private InputAction _jumpAction;
+    private InputAction _sprintAction;
+    private InputAction _crouchAction;
+    private InputAction _interactAction;
+    private InputAction _flashlightAction;
+
     [SerializeField] private MouseController _mouseController;
     [SerializeField] private JumpController _jumpController;
     [SerializeField] private CrouchController _crouchController;
@@ -22,6 +31,26 @@ public class Player : MonoBehaviour
     private IFlashlight _flashlight;
     private IAnimation _animation;
     private IDoor _door;
+
+    private void OnEnable()
+    {
+        _inputAction.FindActionMap("Player").Enable();
+    }
+
+    private void OnDisable()
+    {
+        _inputAction.FindActionMap("Player").Disable();
+    }
+    private void Awake()
+    {
+        _moveAction = InputSystem.actions.FindAction("Move");
+        _lookAction = InputSystem.actions.FindAction("Look");
+        _crouchAction = InputSystem.actions.FindAction("Crouch");
+        _jumpAction = InputSystem.actions.FindAction("Jump");
+        _sprintAction = InputSystem.actions.FindAction("Sprint");
+        _interactAction = InputSystem.actions.FindAction("Interact");
+        _flashlightAction = InputSystem.actions.FindAction("Flashlight");
+    }
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -33,12 +62,15 @@ public class Player : MonoBehaviour
         _animation = _animationController;
         _door = _doorInteractionController;
 
-        _walkStrategy = new WalkMovement(_animation, 2f);
-        _runStrategy = new RunMovement(_animation, 5f);
+        _walkStrategy = new WalkMovement(_inputAction, _moveAction,  _animation, _rb, 2f);
+        _runStrategy = new RunMovement(_inputAction, _moveAction, _animation, _rb, 5f);
         _currentStategy = _walkStrategy;
 
-        _crouch?.Init(_mouseController.GetCamera(), _animation);
-        _door?.Init(_mouseController.GetCamera());
+        _rotatable?.Init(_inputAction, _lookAction);
+        _jump?.Init(_inputAction, _jumpAction);
+        _crouch?.Init(_inputAction, _crouchAction, _mouseController.GetCamera(), _animation);
+        _flashlight?.Init(_inputAction, _flashlightAction);
+        _door?.Init(_inputAction, _interactAction, _mouseController.GetCamera());
 
     }
 
@@ -50,7 +82,7 @@ public class Player : MonoBehaviour
         {
             _currentStategy = _walkStrategy;
         }
-        else if (Input.GetKey(KeyCode.LeftShift))
+        else if (Input.GetKey(KeyCode.LeftShift) && _inputAction == null || _sprintAction.IsPressed())
         {
             _currentStategy = _runStrategy;
         }
@@ -80,7 +112,7 @@ public class Player : MonoBehaviour
 
         _jump?.CheckGround();
 
-        _currentStategy?.Move(_rb, transform);
+        _currentStategy?.Move(transform);
         _rotatable?.Rotate(_rb);
     }
 

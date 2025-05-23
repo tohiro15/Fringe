@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CrouchController : MonoBehaviour, ICrouch
 {
@@ -16,6 +17,9 @@ public class CrouchController : MonoBehaviour, ICrouch
     private float _defaultColliderHeight;
     private float _defaultColliderRadius;
 
+    private InputActionAsset _inputAction;
+    private InputAction _crouchAction;
+
     private Vector3 _defaultCenter;
     private Vector3 _defaultCameraPosition;
 
@@ -25,8 +29,7 @@ public class CrouchController : MonoBehaviour, ICrouch
 
     public bool GetIsCrouching() => _isCrouching;
     public bool GetWantsToStant() => _wantsToStand;
-
-    private void Start()
+    public void Init(InputActionAsset inputAction, InputAction crouchAction, Camera playerCamera, IAnimation animation)
     {
         if (_playerCollider != null)
         {
@@ -34,9 +37,9 @@ public class CrouchController : MonoBehaviour, ICrouch
             _defaultColliderRadius = _playerCollider.radius;
             _defaultCenter = _playerCollider.center;
         }
-    }
-    public void Init(Camera playerCamera, IAnimation animation)
-    {
+
+        _crouchAction = crouchAction;
+
         _camera = playerCamera;
         _defaultCameraPosition = _camera.transform.localPosition;
 
@@ -44,11 +47,11 @@ public class CrouchController : MonoBehaviour, ICrouch
     }
     public void HandleInput()
     {
-        if(Input.GetKeyDown(KeyCode.LeftControl) && !_isCrouching)
+        if(Input.GetKeyDown(KeyCode.LeftControl) && !_isCrouching && _inputAction == null || _crouchAction.WasPerformedThisFrame())
         {
             Crouch();
         }
-        else if(Input.GetKeyUp(KeyCode.LeftControl) && _isCrouching)
+        else if(Input.GetKeyUp(KeyCode.LeftControl) && _isCrouching && _inputAction == null || _crouchAction.WasReleasedThisFrame())
         {
             _isCrouching = false;
             _wantsToStand = true;
