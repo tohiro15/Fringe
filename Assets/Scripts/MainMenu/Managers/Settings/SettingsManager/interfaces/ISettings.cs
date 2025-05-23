@@ -1,3 +1,7 @@
+using TMPro;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
 public interface ISettings
 {
     void ChangeSFXVolume(float value);
@@ -17,4 +21,10 @@ public interface ISettings
 
     void ChangeSensitivity(float value);
     float GetSensitivity();
+
+    InputAction GetAction(string mapName, string actionName);
+    InputActionAsset GetInputActionsAsset();
+    void Rebind(Button button, TMP_Text label, InputAction action, int bindingIndex);
+    void RebindCompleted(Button button, TMP_Text label, InputAction action);
+
 }

@@ -3,8 +3,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
-    [SerializeField] private InputActionAsset _inputAction;
-
     private InputAction _moveAction;
     private InputAction _lookAction;
     private InputAction _jumpAction;
@@ -37,24 +35,28 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputAction.FindActionMap("Player").Enable();
+        SettingsManager.Instance.GetInputActionsAsset().FindActionMap("Player")?.Enable();
     }
 
     private void OnDisable()
     {
-        _inputAction.FindActionMap("Player").Disable();
+        SettingsManager.Instance.GetInputActionsAsset().FindActionMap("Player")?.Disable();
     }
+
     private void Awake()
     {
-        _moveAction = InputSystem.actions.FindAction("Move");
-        _lookAction = InputSystem.actions.FindAction("Look");
-        _crouchAction = InputSystem.actions.FindAction("Crouch");
-        _jumpAction = InputSystem.actions.FindAction("Jump");
-        _sprintAction = InputSystem.actions.FindAction("Sprint");
-        _interactAction = InputSystem.actions.FindAction("Interact");
-        _flashlightAction = InputSystem.actions.FindAction("Flashlight");
-        _pauseActionPlayer = InputSystem.actions.FindAction("Pause");
+        var inputAsset = SettingsManager.Instance.GetInputActionsAsset();
+
+        _moveAction = SettingsManager.Instance.GetAction("Player", "Move");
+        _lookAction = SettingsManager.Instance.GetAction("Player", "Look");
+        _crouchAction = SettingsManager.Instance.GetAction("Player", "Crouch");
+        _jumpAction = SettingsManager.Instance.GetAction("Player", "Jump");
+        _sprintAction = SettingsManager.Instance.GetAction("Player", "Sprint");
+        _interactAction = SettingsManager.Instance.GetAction("Player", "Interact");
+        _flashlightAction = SettingsManager.Instance.GetAction("Player", "Flashlight");
+        _pauseActionPlayer = SettingsManager.Instance.GetAction("Player", "Pause");
     }
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -66,15 +68,15 @@ public class Player : MonoBehaviour
         _animation = _animationController;
         _door = _doorInteractionController;
 
-        _walkStrategy = new WalkMovement(_inputAction, _moveAction,  _animation, _rb, 2f);
-        _runStrategy = new RunMovement(_inputAction, _moveAction, _animation, _rb, 5f);
+        _walkStrategy = new WalkMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction,  _animation, _rb, 2f);
+        _runStrategy = new RunMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction, _animation, _rb, 5f);
         _currentStategy = _walkStrategy;
 
-        _rotatable?.Init(_inputAction, _lookAction);
-        _jump?.Init(_inputAction, _jumpAction);
-        _crouch?.Init(_inputAction, _crouchAction, _mouseController.GetCamera(), _animation);
-        _flashlight?.Init(_inputAction, _flashlightAction);
-        _door?.Init(_inputAction, _interactAction, _mouseController.GetCamera());
+        _rotatable?.Init(SettingsManager.Instance.GetInputActionsAsset(), _lookAction);
+        _jump?.Init(SettingsManager.Instance.GetInputActionsAsset(), _jumpAction);
+        _crouch?.Init(SettingsManager.Instance.GetInputActionsAsset(), _crouchAction, _mouseController.GetCamera(), _animation);
+        _flashlight?.Init(SettingsManager.Instance.GetInputActionsAsset(), _flashlightAction);
+        _door?.Init(SettingsManager.Instance.GetInputActionsAsset(), _interactAction, _mouseController.GetCamera());
 
     }
 
@@ -86,7 +88,7 @@ public class Player : MonoBehaviour
         {
             _currentStategy = _walkStrategy;
         }
-        else if (Input.GetKey(KeyCode.LeftShift) && _inputAction == null || _sprintAction.IsPressed())
+        else if (Input.GetKey(KeyCode.LeftShift) && SettingsManager.Instance.GetInputActionsAsset() == null || _sprintAction.IsPressed())
         {
             _currentStategy = _runStrategy;
         }
@@ -106,7 +108,7 @@ public class Player : MonoBehaviour
 
         _door?.FindDoor();
 
-        if (/*Input.GetKeyDown(KeyCode.Escape) && _inputAction == null ||*/ _pauseActionPlayer.WasPressedThisFrame()) SceneManager.LoadScene(0); // временный способ выйти в главное меню
+        if (Input.GetKeyDown(KeyCode.Escape) && SettingsManager.Instance.GetInputActionsAsset() == null || _pauseActionPlayer.WasPressedThisFrame()) SceneManager.LoadScene(0); // временный способ выйти в главное меню
     }
 
     private void FixedUpdate()

@@ -1,5 +1,8 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour, ISettings
 {
@@ -14,8 +17,37 @@ public class SettingsManager : MonoBehaviour, ISettings
 
         Instance = this;
 
+        _moveAction = GetAction("Player", "Move");
+        _lookAction = GetAction("Player", "Look");
+        _jumpAction = GetAction("Player", "Jump");
+        _sprintAction = GetAction("Player", "Sprint");
+        _crouchAction = GetAction("Player", "Crouch");
+        _interactAction = GetAction("Player", "Interact");
+        _flashlightAction = GetAction("Player", "Flashlight");
+        _pauseActionPlayer = GetAction("Player", "Pause");
+
         DontDestroyOnLoad(gameObject);
     }
+
+    [Header("Control Settings")]
+    [Space]
+
+    [SerializeField] private InputActionAsset _inputActions;
+
+    private InputAction _moveAction;
+    private InputAction _lookAction;
+    private InputAction _jumpAction;
+    private InputAction _sprintAction;
+    private InputAction _crouchAction;
+    private InputAction _interactAction;
+    private InputAction _flashlightAction;
+    private InputAction _pauseActionPlayer;
+
+    private InputActionRebindingExtensions.RebindingOperation _rebindingOperation;
+    private int _currentBindingIndex;  // ƒобавлено: сохран€ем индекс биндинга
+
+    [Header("Sound Settings")]
+    [Space]
 
     [SerializeField] private AudioMixer _SFXAudioMixer;
     [SerializeField] private AudioMixer _musicAudioMixer;
@@ -48,6 +80,7 @@ public class SettingsManager : MonoBehaviour, ISettings
         return _currentQualityLevel;
     }
     #endregion
+
     #region ResolutionSettings
     public void ChangeResolution(int index)
     {
@@ -82,6 +115,7 @@ public class SettingsManager : MonoBehaviour, ISettings
         }
     }
     #endregion
+
     #region WindowModeSettings
     public void ChangeWindowMode()
     {
@@ -93,6 +127,7 @@ public class SettingsManager : MonoBehaviour, ISettings
         return _windowMode;
     }
     #endregion
+
     #region VolumeSettings
     public void ChangeSFXVolume(float value)
     {
@@ -129,15 +164,61 @@ public class SettingsManager : MonoBehaviour, ISettings
     }
 
     #endregion
+
     #region MouseSensitivitySettings
     public void ChangeSensitivity(float newSensitivity)
     {
-        _mouseSensitivity = newSensitivity; ;
+        _mouseSensitivity = newSensitivity;
     }
 
     public float GetSensitivity()
     {
         return _mouseSensitivity;
     }
+    #endregion
+
+    #region ControlSettings
+
+    public InputAction GetAction(string mapName, string actionName)
+    {
+        return _inputActions.FindActionMap(mapName)?.FindAction(actionName);
+    }
+
+    public InputActionAsset GetInputActionsAsset()
+    {
+        return _inputActions;
+    }
+
+    public void Rebind(Button button, TMP_Text label, InputAction action, int bindingIndex)
+    {
+        _inputActions.FindActionMap("Player").Disable();
+
+        label.text = "...";
+        button.interactable = false;
+
+        _currentBindingIndex = bindingIndex;
+
+        _rebindingOperation = action.PerformInteractiveRebinding(bindingIndex)
+            .OnComplete(operation => RebindCompleted(button, label, action));
+
+        _rebindingOperation.Start();
+    }
+
+    public void RebindCompleted(Button button, TMP_Text label, InputAction action)
+    {
+        _rebindingOperation.Dispose();
+
+        string effectivePath = action.bindings[_currentBindingIndex].effectivePath;
+
+        string readableName = InputControlPath.ToHumanReadableString(effectivePath,
+            InputControlPath.HumanReadableStringOptions.OmitDevice);
+
+        label.text = readableName;
+        button.interactable = true;
+
+        _inputActions.FindActionMap("Player").Enable();
+    }
+
+
     #endregion
 }
