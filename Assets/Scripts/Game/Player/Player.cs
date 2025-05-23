@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] private InputActionAsset _inputAction;
+
     private InputAction _moveAction;
     private InputAction _lookAction;
     private InputAction _jumpAction;
@@ -10,6 +12,7 @@ public class Player : MonoBehaviour
     private InputAction _crouchAction;
     private InputAction _interactAction;
     private InputAction _flashlightAction;
+    private InputAction _pauseActionPlayer;
 
     [SerializeField] private MouseController _mouseController;
     [SerializeField] private JumpController _jumpController;
@@ -50,6 +53,7 @@ public class Player : MonoBehaviour
         _sprintAction = InputSystem.actions.FindAction("Sprint");
         _interactAction = InputSystem.actions.FindAction("Interact");
         _flashlightAction = InputSystem.actions.FindAction("Flashlight");
+        _pauseActionPlayer = InputSystem.actions.FindAction("Pause");
     }
     private void Start()
     {
@@ -101,6 +105,8 @@ public class Player : MonoBehaviour
         _flashlight?.HandleInput();
 
         _door?.FindDoor();
+
+        if (/*Input.GetKeyDown(KeyCode.Escape) && _inputAction == null ||*/ _pauseActionPlayer.WasPressedThisFrame()) SceneManager.LoadScene(0); // временный способ выйти в главное меню
     }
 
     private void FixedUpdate()

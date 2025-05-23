@@ -397,6 +397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c97ba1c828e2e4ab9efa645e4addfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputAction: {fileID: -944628639613478452, guid: e6ca3bbb04e964f40a75d7e20657a26a,
+    type: 3}
   _soundManager: {fileID: 125501165}
 --- !u!4 &315286435
 Transform:

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -14,10 +15,11 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-
     }
 
+    [SerializeField] private InputActionAsset _inputAction;
     [SerializeField] private SoundManager _soundManager;
+
     public ISound Sound => _sound;
 
     private ISound _sound;
@@ -40,11 +42,6 @@ public class GameManager : MonoBehaviour
 
         SetGameState(GameState.Playing);
         LockCursor();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene(0);
     }
 
     public void SetGameState(GameState newState)
@@ -72,5 +69,10 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         IsCursorLocked = false;
+    }
+
+    public InputActionAsset GetInputActionAsset()
+    {
+        return _inputAction;
     }
 }
