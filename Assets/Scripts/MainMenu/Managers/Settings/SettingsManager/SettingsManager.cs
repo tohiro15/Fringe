@@ -189,36 +189,5 @@ public class SettingsManager : MonoBehaviour, ISettings
         return _inputActions;
     }
 
-    public void Rebind(Button button, TMP_Text label, InputAction action, int bindingIndex)
-    {
-        _inputActions.FindActionMap("Player").Disable();
-
-        label.text = "...";
-        button.interactable = false;
-
-        _currentBindingIndex = bindingIndex;
-
-        _rebindingOperation = action.PerformInteractiveRebinding(bindingIndex)
-            .OnComplete(operation => RebindCompleted(button, label, action));
-
-        _rebindingOperation.Start();
-    }
-
-    public void RebindCompleted(Button button, TMP_Text label, InputAction action)
-    {
-        _rebindingOperation.Dispose();
-
-        string effectivePath = action.bindings[_currentBindingIndex].effectivePath;
-
-        string readableName = InputControlPath.ToHumanReadableString(effectivePath,
-            InputControlPath.HumanReadableStringOptions.OmitDevice);
-
-        label.text = readableName;
-        button.interactable = true;
-
-        _inputActions.FindActionMap("Player").Enable();
-    }
-
-
     #endregion
 }

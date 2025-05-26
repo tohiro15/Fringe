@@ -4,8 +4,6 @@ using TMPro;
 
 public class ControlSettingsUI : MonoBehaviour
 {
-    [SerializeField] private Button[] _rebindButtons;
-
     [SerializeField] private Slider _sensitivitySlider;
     [SerializeField] private TMP_Text _sensitivityText;
 

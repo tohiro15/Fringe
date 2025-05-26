@@ -28,21 +28,23 @@ public class MouseController : MonoBehaviour, IRotatable
 
         if (_inputActions == null)
         {
-            _mouseX = Input.GetAxis("Mouse X") * SettingsManager.Instance.GetSensitivity() * Time.fixedDeltaTime;
-            _mouseY = Input.GetAxis("Mouse Y") * SettingsManager.Instance.GetSensitivity() * Time.fixedDeltaTime;
+            _mouseX = Input.GetAxis("Mouse X") * SettingsManager.Instance.GetSensitivity();
+            _mouseY = Input.GetAxis("Mouse Y") * SettingsManager.Instance.GetSensitivity();
         }
         else
         {
-            _mouseX = _lookAmt.x * SettingsManager.Instance.GetSensitivity() * Time.deltaTime;
-            _mouseY = _lookAmt.y * SettingsManager.Instance.GetSensitivity() * Time.deltaTime;
+            _lookAmt = _lookAction.ReadValue<Vector2>();
+
+            float adjustedSensitivity = SettingsManager.Instance.GetSensitivity() / 100f;
+            _mouseX = _lookAmt.x * adjustedSensitivity;
+            _mouseY = _lookAmt.y * adjustedSensitivity;
         }
     }
+
 
     public void Rotate(Rigidbody rb)
     {
         if (GameManager.Instance.CurrentState != GameState.Playing) return;
-
-        if (_inputActions != null) _lookAmt = _lookAction.ReadValue<Vector2>();
 
         _xRotation -= _mouseY;
         _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);

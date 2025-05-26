@@ -24,7 +24,5 @@ public interface ISettings
 
     InputAction GetAction(string mapName, string actionName);
     InputActionAsset GetInputActionsAsset();
-    void Rebind(Button button, TMP_Text label, InputAction action, int bindingIndex);
-    void RebindCompleted(Button button, TMP_Text label, InputAction action);
 
 }
