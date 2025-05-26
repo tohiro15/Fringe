@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour, IUI
         }
     }
 
-    public void UpdateInteractionText(bool isActive, string text = "Нажмите E чтобы открыть")
+    public void UpdateInteractionText(bool isActive, string text = "Нажмите 'E' чтобы открыть")
     {
         if(_interactText == null) return;
         _interactText.text = text;

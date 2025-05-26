@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class SingleHingedDoor : MonoBehaviour, IDoor
 {
     [SerializeField] private float _openAngle = 90f;
     [SerializeField] private float _openSpeed = 5f;
@@ -15,7 +15,7 @@ public class Door : MonoBehaviour
         _targetRotation = _closedRotation;
     }
 
-    public void Interact()
+    public void Interaction()
     {
         _isOpen = !_isOpen;
         float angle = _isOpen ? _openAngle : 0f;

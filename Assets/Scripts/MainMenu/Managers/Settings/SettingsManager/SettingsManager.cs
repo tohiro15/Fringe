@@ -17,15 +17,6 @@ public class SettingsManager : MonoBehaviour, ISettings
 
         Instance = this;
 
-        _moveAction = GetAction("Player", "Move");
-        _lookAction = GetAction("Player", "Look");
-        _jumpAction = GetAction("Player", "Jump");
-        _sprintAction = GetAction("Player", "Sprint");
-        _crouchAction = GetAction("Player", "Crouch");
-        _interactAction = GetAction("Player", "Interact");
-        _flashlightAction = GetAction("Player", "Flashlight");
-        _pauseActionPlayer = GetAction("Player", "Pause");
-
         DontDestroyOnLoad(gameObject);
     }
 
@@ -33,18 +24,6 @@ public class SettingsManager : MonoBehaviour, ISettings
     [Space]
 
     [SerializeField] private InputActionAsset _inputActions;
-
-    private InputAction _moveAction;
-    private InputAction _lookAction;
-    private InputAction _jumpAction;
-    private InputAction _sprintAction;
-    private InputAction _crouchAction;
-    private InputAction _interactAction;
-    private InputAction _flashlightAction;
-    private InputAction _pauseActionPlayer;
-
-    private InputActionRebindingExtensions.RebindingOperation _rebindingOperation;
-    private int _currentBindingIndex;  // ƒобавлено: сохран€ем индекс биндинга
 
     [Header("Sound Settings")]
     [Space]

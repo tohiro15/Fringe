@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     private ICrouch _crouch;
     private IFlashlight _flashlight;
     private IAnimation _animation;
-    private IDoor _door;
+    private IDoorController _doorController;
 
     private void OnEnable()
     {
@@ -45,8 +45,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        var inputAsset = SettingsManager.Instance.GetInputActionsAsset();
-
         _moveAction = SettingsManager.Instance.GetAction("Player", "Move");
         _lookAction = SettingsManager.Instance.GetAction("Player", "Look");
         _crouchAction = SettingsManager.Instance.GetAction("Player", "Crouch");
@@ -66,7 +64,7 @@ public class Player : MonoBehaviour
         _crouch = _crouchController;
         _flashlight = _flashlightController;
         _animation = _animationController;
-        _door = _doorInteractionController;
+        _doorController = _doorInteractionController;
 
         _walkStrategy = new WalkMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction,  _animation, _rb, 2f);
         _runStrategy = new RunMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction, _animation, _rb, 5f);
@@ -76,7 +74,7 @@ public class Player : MonoBehaviour
         _jump?.Init(SettingsManager.Instance.GetInputActionsAsset(), _jumpAction);
         _crouch?.Init(SettingsManager.Instance.GetInputActionsAsset(), _crouchAction, _mouseController.GetCamera(), _animation);
         _flashlight?.Init(SettingsManager.Instance.GetInputActionsAsset(), _flashlightAction);
-        _door?.Init(SettingsManager.Instance.GetInputActionsAsset(), _interactAction, _mouseController.GetCamera());
+        _doorController?.Init(_interactAction, _mouseController.GetCamera());
 
     }
 
@@ -106,7 +104,7 @@ public class Player : MonoBehaviour
 
         _flashlight?.HandleInput();
 
-        _door?.FindDoor();
+        _doorController?.FindDoorAndInteract();
 
         if (Input.GetKeyDown(KeyCode.Escape) && SettingsManager.Instance.GetInputActionsAsset() == null || _pauseActionPlayer.WasPressedThisFrame()) SceneManager.LoadScene(0); // временный способ выйти в главное меню
     }
