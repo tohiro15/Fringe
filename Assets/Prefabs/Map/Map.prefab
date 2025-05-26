@@ -2111,7 +2111,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 10010
+  m_VersionIndex: 10016
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6153,7 +6153,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4882
+  m_VersionIndex: 4888
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -77298,7 +77298,7 @@ PrefabInstance:
     - target: {fileID: 2812364750012269408, guid: 9e4de59386540ae4f94846a577cfde41,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.07
+      value: 0.516
       objectReference: {fileID: 0}
     - target: {fileID: 2812364750012269408, guid: 9e4de59386540ae4f94846a577cfde41,
         type: 3}
