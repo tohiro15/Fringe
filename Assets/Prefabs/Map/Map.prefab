@@ -2111,7 +2111,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 10073
+  m_VersionIndex: 10088
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3472,7 +3472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3991953484306719410}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6163,7 +6163,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4945
+  m_VersionIndex: 4960
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -12300,6 +12300,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 5898401249263711076, guid: 12f23157daeaeac4f854562c2f429358,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: bd8206d3363d6744cb672d782b870549,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 1389699473010722421, guid: 12f23157daeaeac4f854562c2f429358, type: 3}
     m_RemovedGameObjects: []
@@ -47515,7 +47521,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 51a149f55268cf245bccf4a0993a19f2,
+      objectReference: {fileID: 13400000, guid: bd8206d3363d6744cb672d782b870549,
         type: 2}
     - target: {fileID: 6263633768007829386, guid: 3f7278104dc5e7046aae68c574dcbec8,
         type: 3}
@@ -81834,7 +81840,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 51a149f55268cf245bccf4a0993a19f2,
+      objectReference: {fileID: 13400000, guid: bd8206d3363d6744cb672d782b870549,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -81844,7 +81850,38 @@ PrefabInstance:
         type: 3}
       insertIndex: 1
       addedObject: {fileID: 4983729026177637029}
+    - targetCorrespondingSourceObject: {fileID: 5430661640339399650, guid: 998ea4ddc067f2849afb62b4e96a8da8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1340191580818048295}
   m_SourcePrefab: {fileID: 100100000, guid: 998ea4ddc067f2849afb62b4e96a8da8, type: 3}
+--- !u!1 &4211814134153883167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5430661640339399650, guid: 998ea4ddc067f2849afb62b4e96a8da8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8155679583592713725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1340191580818048295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211814134153883167}
+  m_Material: {fileID: 13400000, guid: 51a149f55268cf245bccf4a0993a19f2, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.48443794, y: 0.2943861, z: 1.8046122}
+  m_Center: {x: -0.2577811, y: 0.04025774, z: -2.1428375}
 --- !u!1 &5675000186720008482 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4607021635966055647, guid: 998ea4ddc067f2849afb62b4e96a8da8,
@@ -81863,7 +81900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443878025bac02745ad4efd088f4454d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slideOffset: {x: 1.1, y: 0, z: 0}
+  _slideOffset: {x: 1.3, y: 0, z: 0}
   _moveSpeed: 2
 --- !u!4 &6163891692673362538 stripped
 Transform:
