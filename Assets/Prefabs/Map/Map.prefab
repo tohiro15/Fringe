@@ -2111,7 +2111,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 10004
+  m_VersionIndex: 10010
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6153,7 +6153,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4876
+  m_VersionIndex: 4882
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -67023,7 +67023,7 @@ PrefabInstance:
     - target: {fileID: 1328230886043543112, guid: 3f7278104dc5e7046aae68c574dcbec8,
         type: 3}
       propertyPath: m_TagString
-      value: Door
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3143573736095466344, guid: 3f7278104dc5e7046aae68c574dcbec8,
         type: 3}
@@ -67033,7 +67033,7 @@ PrefabInstance:
     - target: {fileID: 6263633768007829386, guid: 3f7278104dc5e7046aae68c574dcbec8,
         type: 3}
       propertyPath: m_TagString
-      value: Door
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8286783784315315467, guid: 3f7278104dc5e7046aae68c574dcbec8,
         type: 3}
@@ -77295,6 +77295,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2812364750012269408, guid: 9e4de59386540ae4f94846a577cfde41,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812364750012269408, guid: 9e4de59386540ae4f94846a577cfde41,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.197
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812364750012269408, guid: 9e4de59386540ae4f94846a577cfde41,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812364750012269408, guid: 9e4de59386540ae4f94846a577cfde41,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 2812364750012269411, guid: 9e4de59386540ae4f94846a577cfde41,
         type: 3}
       propertyPath: m_Range
@@ -77311,6 +77331,11 @@ PrefabInstance:
       value: HP_Lamp_04
       objectReference: {fileID: 0}
     - target: {fileID: 3345024742987428274, guid: 9e4de59386540ae4f94846a577cfde41,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.197
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711728527703814771, guid: 9e4de59386540ae4f94846a577cfde41,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.197
