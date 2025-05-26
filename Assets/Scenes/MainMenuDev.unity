@@ -2786,12 +2786,7 @@ PrefabInstance:
     - target: {fileID: 3815213331629464189, guid: 681ad46654a721a46aee816c48674b6d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 10085
-      objectReference: {fileID: 0}
-    - target: {fileID: 4983729026177637029, guid: 681ad46654a721a46aee816c48674b6d,
-        type: 3}
-      propertyPath: _slideOffset.x
-      value: 1.15
+      value: 10094
       objectReference: {fileID: 0}
     - target: {fileID: 5417595472247425452, guid: 681ad46654a721a46aee816c48674b6d,
         type: 3}
@@ -2801,7 +2796,7 @@ PrefabInstance:
     - target: {fileID: 5417595472247425452, guid: 681ad46654a721a46aee816c48674b6d,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4957
+      value: 4966
       objectReference: {fileID: 0}
     - target: {fileID: 6413444861052398107, guid: 681ad46654a721a46aee816c48674b6d,
         type: 3}
@@ -4316,7 +4311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "'\u0412'"
+  m_text: '''D'''
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8f3301c5ff914244a430be21f5a5637, type: 2}
   m_sharedMaterial: {fileID: -7833938797117967107, guid: e8f3301c5ff914244a430be21f5a5637,
@@ -6925,7 +6920,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "'Hold \u0423'"
+  m_text: '''Hold E'''
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8f3301c5ff914244a430be21f5a5637, type: 2}
   m_sharedMaterial: {fileID: -7833938797117967107, guid: e8f3301c5ff914244a430be21f5a5637,
@@ -8288,10 +8283,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1576181873}
   m_HandleRect: {fileID: 234566431}
   m_Direction: 0
-  m_MinValue: 20
-  m_MaxValue: 200
+  m_MinValue: 1
+  m_MaxValue: 150
   m_WholeNumbers: 0
-  m_Value: 80
+  m_Value: 15
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8949,7 +8944,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "'Hold \u0410'"
+  m_text: '''Hold F'''
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8f3301c5ff914244a430be21f5a5637, type: 2}
   m_sharedMaterial: {fileID: -7833938797117967107, guid: e8f3301c5ff914244a430be21f5a5637,
@@ -10018,7 +10013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 651.8508, y: -545}
+  m_AnchoredPosition: {x: 659.00946, y: -545}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1076883782
@@ -15302,7 +15297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "'\u0426'"
+  m_text: '''W'''
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8f3301c5ff914244a430be21f5a5637, type: 2}
   m_sharedMaterial: {fileID: -7833938797117967107, guid: e8f3301c5ff914244a430be21f5a5637,
@@ -17339,7 +17334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "'\u0424'"
+  m_text: '''A'''
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8f3301c5ff914244a430be21f5a5637, type: 2}
   m_sharedMaterial: {fileID: -7833938797117967107, guid: e8f3301c5ff914244a430be21f5a5637,
@@ -18869,7 +18864,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "'\u042B'"
+  m_text: '''S'''
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e8f3301c5ff914244a430be21f5a5637, type: 2}
   m_sharedMaterial: {fileID: -7833938797117967107, guid: e8f3301c5ff914244a430be21f5a5637,

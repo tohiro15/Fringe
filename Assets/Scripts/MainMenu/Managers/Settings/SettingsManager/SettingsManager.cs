@@ -34,7 +34,7 @@ public class SettingsManager : MonoBehaviour, ISettings
     private int _currentResolutionIndex;
     private int _currentQualityLevel;
 
-    private float _mouseSensitivity = 80f;
+    private float _mouseSensitivity = 10f;
 
     private bool _windowMode = false;
 

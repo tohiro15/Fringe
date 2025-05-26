@@ -1,6 +1,6 @@
+п»їusing TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class ControlSettingsUI : MonoBehaviour
 {
@@ -13,20 +13,21 @@ public class ControlSettingsUI : MonoBehaviour
     {
         _settings = settings;
 
-        _sensitivitySlider.value = _settings.GetSensitivity();
-        _sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
+        _sensitivitySlider.value = _settings.GetSensitivity() * 10f;
+        _sensitivitySlider.onValueChanged.AddListener(OnSliderValueChanged);
 
-        UpdateControlLabel(_settings.GetSensitivity());
+        UpdateControlLabel(_sensitivitySlider.value);
     }
 
-    private void OnSensitivityChanged(float value)
+    private void OnSliderValueChanged(float sliderValue)
     {
-        _settings.ChangeSensitivity(value);
-        UpdateControlLabel(value);
+        float sensitivityNormalized = sliderValue / 10f;
+        _settings.ChangeSensitivity(sensitivityNormalized);
+        UpdateControlLabel(sliderValue);
     }
 
-    private void UpdateControlLabel(float value)
+    private void UpdateControlLabel(float sliderValue)
     {
-        _sensitivityText.text = $"Чувствительность: {value:F0}";
+        _sensitivityText.text = $"Р§СѓРІСЃС‚РІРёС‚РµР»СЊРЅРѕСЃС‚СЊ: {sliderValue:F0}";
     }
 }

@@ -35,9 +35,8 @@ public class MouseController : MonoBehaviour, IRotatable
         {
             _lookAmt = _lookAction.ReadValue<Vector2>();
 
-            float adjustedSensitivity = SettingsManager.Instance.GetSensitivity() / 100f;
-            _mouseX = _lookAmt.x * adjustedSensitivity;
-            _mouseY = _lookAmt.y * adjustedSensitivity;
+            _mouseX = _lookAmt.x * SettingsManager.Instance.GetSensitivity() * Time.deltaTime;
+            _mouseY = _lookAmt.y * SettingsManager.Instance.GetSensitivity() * Time.deltaTime;
         }
     }
 
