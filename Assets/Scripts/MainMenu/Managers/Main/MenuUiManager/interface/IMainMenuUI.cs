@@ -7,8 +7,5 @@ public interface IMainMenuUI
     void InitializeChapterTitles();
     void OpenSettingsMenu();
     void CloseSettingsMenu();
-    void OpenSettings(SettingsCategory category);
     void SetCanvas(MenuState state);
-
-
 }

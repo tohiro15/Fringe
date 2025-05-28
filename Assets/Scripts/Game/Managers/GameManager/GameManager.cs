@@ -20,11 +20,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InputActionAsset _inputAction;
     [SerializeField] private SoundManager _soundManager;
     [SerializeField] private UIManager _uiManager;
-
+    [SerializeField] private SettingsUIManager _settingsUIManager;
     public ISound Sound => _sound;
 
     private ISound _sound;
     private IUI _ui;
+    private ISettingsUI _settingsUI;
     public GameState CurrentState { get; private set; }
     public bool IsCursorLocked { get; private set; }
 
@@ -40,6 +41,10 @@ public class GameManager : MonoBehaviour
 
         _sound = _soundManager;
         _ui = _uiManager;
+        _settingsUI = _settingsUIManager;
+
+        _ui?.Init();
+        _settingsUI?.Init(SettingsManager.Instance);
 
         Debug.Log("Game Started");
 

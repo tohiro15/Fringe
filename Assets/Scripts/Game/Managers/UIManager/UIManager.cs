@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour, IUI
 
     [SerializeField] private Canvas _gameCanvas;
     [SerializeField] private Canvas _pauseCanvas;
+    [SerializeField] private Canvas _settingsCanvas;
 
     [Header("Game HUD")]
     [Space]
@@ -33,7 +34,12 @@ public class UIManager : MonoBehaviour, IUI
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _settingsButton;
     [SerializeField] private Button _mainMenuReturnButton;
-    private void Start()
+
+    [Header("Settings Menu")]
+    [Space]
+
+    [SerializeField] private Button _exitButton;
+    public void Init()
     {
         _gameCanvas?.gameObject.SetActive(true);
         _pauseCanvas?.gameObject.SetActive(false);
@@ -46,8 +52,16 @@ public class UIManager : MonoBehaviour, IUI
         _continueButton?.onClick.RemoveAllListeners();
         _continueButton?.onClick.AddListener(ClosePauseMenu);
 
+        _settingsButton?.onClick.RemoveAllListeners();
+        _settingsButton?.onClick.AddListener(OpenSettingsMenu);
+
         _mainMenuReturnButton?.onClick.RemoveAllListeners();
         _mainMenuReturnButton?.onClick.AddListener(GameManager.Instance.ReturnToMainMenu);
+
+        _exitButton.onClick.RemoveAllListeners();
+        _exitButton.onClick.AddListener(OpenPauseMenu);
+
+        SetCanvas(true, false,false);
     }
 
     public void UpdateInteractionText(bool isActive, string text = "Нажмите 'E' чтобы открыть")
@@ -60,14 +74,27 @@ public class UIManager : MonoBehaviour, IUI
     public void OpenPauseMenu()
     {
         GameManager.Instance.SetGameState(GameState.Pause);
-        _gameCanvas?.gameObject.SetActive(false);
-        _pauseCanvas?.gameObject.SetActive(true);
+        SetCanvas(false, true, false);
     }
+
+    public void OpenSettingsMenu()
+    {
+        SetCanvas(false, false, true);
+        SettingsUIManager.Instance.OpenSettings(SettingsCategory.Screen);
+    }
+
+
 
     public void ClosePauseMenu()
     {
         GameManager.Instance.SetGameState(GameState.Playing);
-        _gameCanvas?.gameObject.SetActive(true);
-        _pauseCanvas?.gameObject.SetActive(false);
+        SetCanvas(true, false, false);
+    }
+
+    public void SetCanvas(bool game, bool pause, bool settings)
+    {
+        _gameCanvas?.gameObject.SetActive(game);
+        _pauseCanvas?.gameObject.SetActive(pause);
+        _settingsCanvas?.gameObject.SetActive(settings);
     }
 }

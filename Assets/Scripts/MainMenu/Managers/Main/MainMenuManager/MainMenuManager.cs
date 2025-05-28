@@ -19,11 +19,13 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private MainMenuUIManager _mainMenuUIManager;
     [SerializeField] private MenuSoundManager _mainMenuSoundManager;
     [SerializeField] private SettingsManager _settingsManager;
+    [SerializeField] private SettingsUIManager _settingsUIManager;
 
     private IGameFlow _gameFlow;
     private IMainMenuUI _mainMenuUI;
     private IMainMenuSound _mainMenuSound;
     private ISettings _settings;
+    private ISettingsUI _settingsUI;
 
     private void Start()
     {
@@ -35,9 +37,10 @@ public class MainMenuManager : MonoBehaviour
         _mainMenuUI = _mainMenuUIManager;
         _settings = _settingsManager;
         _mainMenuSound = _mainMenuSoundManager;
+        _settingsUI = _settingsUIManager;
 
         _mainMenuUI?.Init(_settings, _gameFlow);
-
+        _settingsUI.Init(_settings);
     }
 
     public IGameFlow GetGameFlow()
