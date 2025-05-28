@@ -95,6 +95,10 @@ public class Player : MonoBehaviour
             _currentStategy = _walkStrategy;
         }
 
+        if(Input.GetKeyDown(KeyCode.Escape) && SettingsManager.Instance.GetInputActionsAsset() == null || _pauseActionPlayer.WasPressedThisFrame())
+        {
+            UIManager.Instance.OpenPauseMenu();
+        }
 
         _rotatable?.HandleInput();
 
@@ -105,8 +109,6 @@ public class Player : MonoBehaviour
         _flashlight?.HandleInput();
 
         _doorController?.FindDoorAndInteract();
-
-        if (Input.GetKeyDown(KeyCode.Escape) && SettingsManager.Instance.GetInputActionsAsset() == null || _pauseActionPlayer.WasPressedThisFrame()) SceneManager.LoadScene(0); // временный способ выйти в главное меню
     }
 
     private void FixedUpdate()

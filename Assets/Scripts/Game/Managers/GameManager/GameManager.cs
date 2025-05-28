@@ -19,10 +19,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private InputActionAsset _inputAction;
     [SerializeField] private SoundManager _soundManager;
+    [SerializeField] private UIManager _uiManager;
 
     public ISound Sound => _sound;
 
     private ISound _sound;
+    private IUI _ui;
     public GameState CurrentState { get; private set; }
     public bool IsCursorLocked { get; private set; }
 
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
         }
 
         _sound = _soundManager;
+        _ui = _uiManager;
 
         Debug.Log("Game Started");
 
@@ -69,6 +72,11 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         IsCursorLocked = false;
+    }
+
+    public void ReturnToMainMenu() // временный способ перейти в главное меню
+    {
+        SceneManager.LoadScene(0);
     }
 
     public InputActionAsset GetInputActionAsset()
