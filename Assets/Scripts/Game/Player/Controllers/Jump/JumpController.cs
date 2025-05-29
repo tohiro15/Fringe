@@ -30,6 +30,7 @@ public class JumpController : MonoBehaviour, IJump
     public void CheckGround()
     {
         _isGrounded = Physics.Raycast(_groundCheck.position, Vector3.down, _groundDistance);
+        Debug.Log($"IsGrounded: {_isGrounded}");
     }
 
     public void HandleInput(Rigidbody rb)
@@ -43,7 +44,7 @@ public class JumpController : MonoBehaviour, IJump
         }
         else
         {
-            if (_jumpAction.WasPressedThisFrame())
+            if (_jumpAction.WasPressedThisFrame() && _isGrounded)
             {
                     rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
             }
