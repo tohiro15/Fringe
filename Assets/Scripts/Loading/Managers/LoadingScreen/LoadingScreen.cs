@@ -56,7 +56,7 @@ public class LoadingScreen : MonoBehaviour
 
                 string keyName = GetBindingNameForCurrentDevice(_startGameInputAction);
 
-                _startGameText.text = $"Нажмите {keyName} чтобы начать историю...";
+                _startGameText.text = $"Нажмите {keyName} чтобы начать историю";
 
                 if ((_startGameInputAction != null && _startGameInputAction.WasPressedThisFrame()) || Input.anyKeyDown)
                 {
