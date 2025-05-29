@@ -33,12 +33,11 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
     [Space]
 
     [Header("Buttons")]
-    [SerializeField] private string[] _chapterTitles;
-    [SerializeField] private Button[] _chapterSelectButtons;
+    [SerializeField] private ChapterButton[] _chapterButtons;
     [SerializeField] private Button _startGameButton;
     [SerializeField] private Button _backButton;
 
-    private int _selectedChapterIndex = -1;
+    private ChapterData _selectedChapter;
 
     public void Init(ISettings settings, IGameFlow gameFlow)
     {
@@ -56,14 +55,9 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
         _exitButton?.onClick.RemoveAllListeners();
         _exitButton?.onClick.AddListener(CloseSettingsMenu);
 
-        for (int i = 0; i < _chapterSelectButtons.Length; i++)
+        for (int i = 0; i < _chapterButtons.Length; i++)
         {
-            int index = i;
-            _chapterSelectButtons[i]?.onClick.RemoveAllListeners();
-            _chapterSelectButtons[i]?.onClick.AddListener(() =>
-            {
-                SelectChapter(index);
-            });
+            _chapterButtons[i].Init(SelectChapter);
         }
 
         if (_startGameButton != null) _startGameButton.interactable = false;
@@ -71,7 +65,7 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
         _startGameButton?.onClick.RemoveAllListeners();
         _startGameButton?.onClick.AddListener(() =>
         {
-            if (MainMenuManager.Instance.GetGameFlow().GetChapterIndex() >= 0)
+            if (_selectedChapter != null)
             {
                 MainMenuManager.Instance.GetGameFlow().StartGame();
             }
@@ -93,44 +87,39 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
     {
         SetCanvas(MenuState.Main);
     }
-    public void SelectChapter(int index)
+    public void SelectChapter(ChapterData chapter)
     {
-        _selectedChapterIndex = index;
+        _selectedChapter = chapter;
 
-        MainMenuManager.Instance.GetGameFlow().SetChapterIndex(index + 1);
+        MainMenuManager.Instance.GetGameFlow().SetChapter(chapter);
 
         if (_startGameButton != null)
             _startGameButton.interactable = true;
 
-        for (int i = 0; i < _chapterSelectButtons.Length; i++)
+        foreach (var chBtn in _chapterButtons)
         {
-            TMP_Text textComponent = _chapterSelectButtons[i].GetComponentInChildren<TMP_Text>();
-            if (textComponent != null)
-            {
-                string label = _chapterTitles != null && i < _chapterTitles.Length
-                    ? $"ÃËÀÂÀ \"{_chapterTitles[i]}\""
-                    : $"ÃËÀÂÀ - {i + 1}";
-
-                textComponent.text = (i == index) ? $"<u>{label}</u>" : label;
-            }
+            chBtn.Highlight(chBtn.ChapterData == chapter);
         }
     }
 
+
     public void InitializeChapterTitles()
     {
-        for (int i = 0; i < _chapterSelectButtons.Length; i++)
+        for (int i = 0; i < _chapterButtons.Length; i++)
         {
-            TMP_Text textComponent = _chapterSelectButtons[i].GetComponentInChildren<TMP_Text>();
+            TMP_Text textComponent = _chapterButtons[i].GetComponentInChildren<TMP_Text>();
+
             if (textComponent != null)
             {
-                string label = _chapterTitles != null && i < _chapterTitles.Length
-                    ? $"ÃËÀÂÀ \"{_chapterTitles[i]}\""
+                string label = (i < _chapterButtons.Length)
+                    ? $"ÃËÀÂÀ \"{_chapterButtons[i].ChapterData.chapterName}\""
                     : $"ÃËÀÂÀ - {i + 1}";
 
                 textComponent.text = label;
             }
         }
     }
+
 
     public void OpenSettingsMenu()
     {

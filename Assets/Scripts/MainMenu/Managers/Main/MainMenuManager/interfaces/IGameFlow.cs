@@ -1,7 +1,7 @@
 public interface IGameFlow
 {
-    void SetChapterIndex(int index);
-    int GetChapterIndex();
+    void SetChapter(ChapterData chapter);
+    ChapterData GetChapter();
     void StartGame();
     void QuitGame();
 }

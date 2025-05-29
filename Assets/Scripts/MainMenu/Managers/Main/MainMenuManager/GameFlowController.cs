@@ -1,27 +1,32 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class GameFlowController : MonoBehaviour, IGameFlow
 {
-    private int _selectedChapterIndex = -1;
+    public static ChapterData SelectedChapter;
+    public static string TargetSceneName;
 
-    public void SetChapterIndex(int index)
+
+    public void SetChapter(ChapterData chapter)
     {
-        _selectedChapterIndex = index;
+        SelectedChapter = chapter;
     }
-    public int GetChapterIndex()
+
+    public ChapterData GetChapter()
     {
-        return _selectedChapterIndex;
+        return SelectedChapter;
     }
+
     public void StartGame()
     {
-        if (_selectedChapterIndex > -1)
+        if (SelectedChapter != null)
         {
-            SceneManager.LoadScene(_selectedChapterIndex);
+            TargetSceneName = SelectedChapter.sceneName;
+            SceneManager.LoadScene("LoadingScene");
         }
         else
         {
-            Debug.LogError("Такой сцены не существует!");
+            Debug.LogError("Не выбрана глава!");
         }
     }
 

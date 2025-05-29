@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         IsCursorLocked = false;
     }
 
-    public void ReturnToMainMenu() // временный способ перейти в главное меню
+    public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(0);
     }
