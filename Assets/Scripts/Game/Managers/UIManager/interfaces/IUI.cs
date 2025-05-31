@@ -1,7 +1,9 @@
+using UnityEngine;
+
 public interface IUI
 {
     void Init();
-    void UpdateInteractionText(bool isActive, string text);
+    void UpdateInteractionImage(bool isActive);
     void OpenPauseMenu();
     void OpenSettingsMenu();
     void ClosePauseMenu();

@@ -26,7 +26,8 @@ public class UIManager : MonoBehaviour, IUI
     [Header("Game HUD")]
     [Space]
 
-    [SerializeField] private TMP_Text _interactText;
+    [SerializeField] private Image _point;
+    [SerializeField] private Image _interactDoor;
 
     [Header("Pause Menu")]
     [Space]
@@ -44,11 +45,6 @@ public class UIManager : MonoBehaviour, IUI
         _gameCanvas?.gameObject.SetActive(true);
         _pauseCanvas?.gameObject.SetActive(false);
 
-        if (_interactText != null)
-        {
-            UpdateInteractionText(false);
-        }
-
         _continueButton?.onClick.RemoveAllListeners();
         _continueButton?.onClick.AddListener(ClosePauseMenu);
 
@@ -61,14 +57,19 @@ public class UIManager : MonoBehaviour, IUI
         _exitButton.onClick.RemoveAllListeners();
         _exitButton.onClick.AddListener(OpenPauseMenu);
 
+        _point?.gameObject.SetActive(true);
+        _interactDoor?.gameObject.SetActive(false);
+
+        UpdateInteractionImage(false);
         SetCanvas(true, false,false);
     }
 
-    public void UpdateInteractionText(bool isActive, string text = "Нажмите 'E' чтобы открыть")
+    public void UpdateInteractionImage(bool isActive)
     {
-        if(_interactText == null) return;
-        _interactText.text = text;
-        _interactText.gameObject.SetActive(isActive);
+        if(_interactDoor == null) return;
+
+        _point?.gameObject.SetActive(!isActive);
+        _interactDoor?.gameObject.SetActive(isActive);
     }
 
     public void OpenPauseMenu()

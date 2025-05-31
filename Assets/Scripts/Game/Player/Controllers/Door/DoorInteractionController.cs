@@ -20,12 +20,11 @@ public class DoorInteractionController : MonoBehaviour, IDoorController
         {
             Transform hitTransform = hit.transform;
 
-            // »щем родител€, который реализует IDoor
             IDoor door = hitTransform.GetComponentInParent<IDoor>();
 
             if (door != null)
             {
-                UIManager.Instance.UpdateInteractionText(true);
+                UIManager.Instance.UpdateInteractionImage(true);
 
                 if ((_interactAction != null && _interactAction.WasPressedThisFrame()) || Input.GetKeyDown(KeyCode.E))
                 {
@@ -35,7 +34,7 @@ public class DoorInteractionController : MonoBehaviour, IDoorController
                 return;
             }
         }
-        UIManager.Instance.UpdateInteractionText(false);
+        UIManager.Instance.UpdateInteractionImage(false);
     }
 
 }
