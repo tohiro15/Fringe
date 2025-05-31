@@ -301,7 +301,6 @@ GameObject:
   - component: {fileID: 1660513695170478013}
   - component: {fileID: 7620821062539784102}
   - component: {fileID: 1795522549998495506}
-  - component: {fileID: 6225587034821015673}
   m_Layer: 0
   m_Name: HP_Office_Door_01_LOD0
   m_TagString: Untagged
@@ -415,27 +414,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.055399023, y: 2.3316176, z: 1.3315263}
   m_Center: {x: 0.017693177, y: 1.1658088, z: -0.66576314}
---- !u!65 &6225587034821015673
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052374155770135895}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.7707596, y: 2.3316176, z: 1.956625}
-  m_Center: {x: -0.028137207, y: 1.1658088, z: -0.64086056}
 --- !u!1 &2814394128375776650
 GameObject:
   m_ObjectHideFlags: 0
