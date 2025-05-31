@@ -9,4 +9,5 @@ public interface ICrouch
     void HandleInput();
     void Crouch();
     void StandUp();
+    bool CanStandUp();
 }

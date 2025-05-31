@@ -7,7 +7,10 @@ public class CrouchController : MonoBehaviour, ICrouch
 
     [SerializeField] private Vector3 _crouchCameraPosition;
 
-    [SerializeField] private float _rayStandupDistance = 1f;
+    [SerializeField] private Transform _headChecker;
+    [SerializeField] private float _headCheckRadius = 0.25f;
+    [SerializeField] private LayerMask _headObstacleLayer;
+
 
     [SerializeField] private float _crouchHeight = 0.5f;
     [SerializeField] private float _crouchRadius = 0.5f;
@@ -47,21 +50,24 @@ public class CrouchController : MonoBehaviour, ICrouch
     }
     public void HandleInput()
     {
-        if(Input.GetKeyDown(KeyCode.LeftControl) && !_isCrouching && _inputAction == null || _crouchAction.WasPerformedThisFrame())
+        bool crouchKeyPressed = Input.GetKeyDown(KeyCode.LeftControl);
+        bool crouchKeyReleased = Input.GetKeyUp(KeyCode.LeftControl);
+
+        if ((crouchKeyPressed && !_isCrouching && _inputAction == null) || (_crouchAction.WasPerformedThisFrame() && !_isCrouching))
         {
             Crouch();
         }
-        else if(Input.GetKeyUp(KeyCode.LeftControl) && _isCrouching && _inputAction == null || _crouchAction.WasReleasedThisFrame())
+        else if ((crouchKeyReleased && _isCrouching && _inputAction == null) || (_crouchAction.WasReleasedThisFrame() && _isCrouching))
         {
-            _isCrouching = false;
             _wantsToStand = true;
         }
 
-        if(_wantsToStand && !_isCrouching)
+        if (_wantsToStand)
         {
             StandUp();
         }
     }
+
 
     public void Crouch()
     {
@@ -77,9 +83,11 @@ public class CrouchController : MonoBehaviour, ICrouch
 
     public void StandUp()
     {
-        if (Physics.Raycast(transform.position, Vector3.up, _rayStandupDistance)) return;
+        if (!CanStandUp())
+            return;
 
         _wantsToStand = false;
+        _isCrouching = false;
 
         _animation?.StopCrouch();
         _playerCollider.height = _defaultColliderHeight;
@@ -88,4 +96,9 @@ public class CrouchController : MonoBehaviour, ICrouch
         _camera.transform.localPosition = _defaultCameraPosition;
     }
 
+
+    public bool CanStandUp()
+    {
+        return !Physics.CheckSphere(_headChecker.position, _headCheckRadius, _headObstacleLayer);
+    }
 }

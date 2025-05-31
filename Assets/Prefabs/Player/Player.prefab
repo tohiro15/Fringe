@@ -509,6 +509,7 @@ Transform:
   m_Children:
   - {fileID: 6762497545655032417}
   - {fileID: 4941842462188145183}
+  - {fileID: 6428367301064019479}
   - {fileID: 551658007986869135}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -574,7 +575,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCollider: {fileID: 3263674814055072688}
   _crouchCameraPosition: {x: 0, y: -0.2, z: 0}
-  _rayStandupDistance: 5
+  _headChecker: {fileID: 6428367301064019479}
+  _headCheckRadius: 0.25
+  _headObstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1
   _crouchHeight: 0.01
   _crouchRadius: 0.5
 --- !u!114 &2982184192089353689
@@ -2114,6 +2119,37 @@ Transform:
   m_Children:
   - {fileID: 9110601142040417883}
   m_Father: {fileID: 9134674269151307589}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6821858199459149363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6428367301064019479}
+  m_Layer: 0
+  m_Name: HeadCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6428367301064019479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821858199459149363}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.85, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8130701495991424515}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6937013157116573752
 GameObject:

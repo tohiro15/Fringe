@@ -6,5 +6,5 @@ public class ChapterData : ScriptableObject
     public string chapterName;
     public string sceneName;
     public Sprite previewImage;
-    public string description;
+    [TextArea] public string description;
 }

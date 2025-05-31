@@ -12,12 +12,24 @@ public class Player : MonoBehaviour
     private InputAction _flashlightAction;
     private InputAction _pauseActionPlayer;
 
+    [Header ("Controllers")]
+    [Space]
+
     [SerializeField] private MouseController _mouseController;
     [SerializeField] private JumpController _jumpController;
     [SerializeField] private CrouchController _crouchController;
     [SerializeField] private FlashlightController _flashlightController;
     [SerializeField] private AnimationController _animationController;
     [SerializeField] private DoorInteractionController _doorInteractionController;
+
+    [Header("Settings")]
+    [Space]
+
+    [SerializeField] private float _walkSpeed = 2f;
+    [SerializeField] private float _runSpeed = 5f;
+
+    [Header("Components")]
+    [Space]
 
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Animator _playerAnimator;
@@ -66,8 +78,8 @@ public class Player : MonoBehaviour
         _animation = _animationController;
         _doorController = _doorInteractionController;
 
-        _walkStrategy = new WalkMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction,  _animation, _rb, 2f);
-        _runStrategy = new RunMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction, _animation, _rb, 5f);
+        _walkStrategy = new WalkMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction,  _animation, _rb, _walkSpeed);
+        _runStrategy = new RunMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction, _animation, _rb, _runSpeed);
         _currentStategy = _walkStrategy;
 
         _rotatable?.Init(SettingsManager.Instance.GetInputActionsAsset(), _lookAction);
