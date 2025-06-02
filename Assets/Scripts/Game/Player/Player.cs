@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
         {
             _currentStategy = _walkStrategy;
         }
-        else if (Input.GetKey(KeyCode.LeftShift) || _sprintAction.IsPressed())
+        else if (Input.GetKey(KeyCode.LeftShift) || _sprintAction.IsPressed() || _crouch != null && _crouch.GetWantsToStant())
         {
             _currentStategy = _runStrategy;
         }
@@ -108,7 +108,6 @@ public class Player : MonoBehaviour
         {
             _currentStategy = _walkStrategy;
         }
-
 
         _rotatable?.HandleInput();
 
