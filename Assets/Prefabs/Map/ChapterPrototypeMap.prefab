@@ -455,7 +455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7216243461717863084}
   m_Layer: 0
-  m_Name: Map
+  m_Name: ChapterPrototypeMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2454,7 +2454,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 11395
+  m_VersionIndex: 11365
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -74498,6 +74498,11 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: 79a46830fe5450b489f16afafd140289, type: 2}
+    - target: {fileID: 6595065234450395460, guid: 3884aa772ffe9724cabe34da2c68192d,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6595065234450395460, guid: 3884aa772ffe9724cabe34da2c68192d,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
