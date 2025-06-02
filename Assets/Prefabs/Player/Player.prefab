@@ -623,7 +623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _flashlight: {fileID: 241884846617093323}
-  maxDistance: 1
+  maxDistance: 1.5
   safeOffset: 0.1
 --- !u!54 &3471536571903059026
 Rigidbody:
