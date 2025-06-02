@@ -1161,7 +1161,7 @@ PrefabInstance:
     - target: {fileID: 1071473723777334183, guid: 681ad46654a721a46aee816c48674b6d,
         type: 3}
       propertyPath: m_Name
-      value: Map
+      value: ChapterPrototypeMap
       objectReference: {fileID: 0}
     - target: {fileID: 1867280930740328341, guid: 681ad46654a721a46aee816c48674b6d,
         type: 3}
