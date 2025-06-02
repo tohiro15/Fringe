@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour, IUI
@@ -77,6 +78,11 @@ public class UIManager : MonoBehaviour, IUI
         GameManager.Instance.SetGameState(GameState.Pause);
         SetCanvas(false, true, false);
     }
+    public void ClosePauseMenu()
+    {
+        GameManager.Instance.SetGameState(GameState.Playing);
+        SetCanvas(true, false, false);
+    }
 
     public void OpenSettingsMenu()
     {
@@ -84,13 +90,6 @@ public class UIManager : MonoBehaviour, IUI
         SettingsUIManager.Instance.OpenSettings(SettingsCategory.Screen);
     }
 
-
-
-    public void ClosePauseMenu()
-    {
-        GameManager.Instance.SetGameState(GameState.Playing);
-        SetCanvas(true, false, false);
-    }
 
     public void SetCanvas(bool game, bool pause, bool settings)
     {

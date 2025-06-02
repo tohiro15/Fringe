@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+
 public class Player : MonoBehaviour
 {
     private InputAction _moveAction;
@@ -92,13 +92,15 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        HandlePauseInput();
+
         if (GameManager.Instance.CurrentState != GameState.Playing) return;
 
         if (_crouch != null && _crouch.GetWantsToStant())
         {
             _currentStategy = _walkStrategy;
         }
-        else if (Input.GetKey(KeyCode.LeftShift) && SettingsManager.Instance.GetInputActionsAsset() == null || _sprintAction.IsPressed())
+        else if (Input.GetKey(KeyCode.LeftShift) || _sprintAction.IsPressed())
         {
             _currentStategy = _runStrategy;
         }
@@ -107,10 +109,6 @@ public class Player : MonoBehaviour
             _currentStategy = _walkStrategy;
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape) && SettingsManager.Instance.GetInputActionsAsset() == null || _pauseActionPlayer.WasPressedThisFrame())
-        {
-            UIManager.Instance.OpenPauseMenu();
-        }
 
         _rotatable?.HandleInput();
 
@@ -134,6 +132,21 @@ public class Player : MonoBehaviour
 
         _currentStategy?.Move(transform);
         _rotatable?.Rotate(_rb);
+    }
+
+    private void HandlePauseInput()
+    {
+        if (_pauseActionPlayer.WasPressedThisFrame() || Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameManager.Instance.CurrentState == GameState.Playing)
+            {
+                UIManager.Instance.OpenPauseMenu();
+            }
+            else if (GameManager.Instance.CurrentState == GameState.Pause)
+            {
+                UIManager.Instance.ClosePauseMenu();
+            }
+        }
     }
 
 }
