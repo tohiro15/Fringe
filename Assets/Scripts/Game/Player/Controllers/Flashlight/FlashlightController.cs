@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 public class FlashlightController : MonoBehaviour, IFlashlight
 {
     [SerializeField] private GameObject _flashlight;
+    [SerializeField] private float maxDistance = 1.5f;
+    [SerializeField] private float safeOffset = 0.1f;
 
     private InputActionAsset _inputAction;
     private InputAction _flashlightAction;
