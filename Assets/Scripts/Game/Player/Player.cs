@@ -1,36 +1,8 @@
-// Player.cs
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
-    [Header("Controllers")]
-    [SerializeField] private MouseController _mouseController;
-    [SerializeField] private JumpController _jumpController;
-    [SerializeField] private CrouchController _crouchController;
-    [SerializeField] private FlashlightController _flashlightController;
-    [SerializeField] private AnimationController _animationController;
-    [SerializeField] private DoorInteractionController _doorInteractionController;
-
-    [Header("Movement Settings")]
-    [SerializeField] private float _walkSpeed = 2f;
-    [SerializeField] private float _runSpeed = 5f;
-
-    private Rigidbody _rb;
-    private IMovementStrategy _walkStrategy;
-    private IMovementStrategy _runStrategy;
-    private IMovementStrategy _currentStrategy;
-
-    private IRotatable _rotatable;
-    private IJump _jump;
-    private ICrouch _crouch;
-    private IFlashlight _flashlight;
-    private IAnimation _animation;
-    private IDoorController _doorController;
-    private ISettings _settings => SettingsManager.Instance;
-    private IUI _ui => UIManager.Instance;
-
     private InputAction _moveAction;
     private InputAction _lookAction;
     private InputAction _jumpAction;
@@ -38,101 +10,142 @@ public class Player : MonoBehaviour
     private InputAction _crouchAction;
     private InputAction _interactAction;
     private InputAction _flashlightAction;
-    private InputAction _pauseAction;
+    private InputAction _pauseActionPlayer;
 
-    private void Awake()
-    {
-        _rb = GetComponent<Rigidbody>();
+    [Header ("Controllers")]
+    [Space]
 
-        var map = _settings.InputActions.FindActionMap("Player");
-        _moveAction = map.FindAction("Move");
-        _lookAction = map.FindAction("Look");
-        _jumpAction = map.FindAction("Jump");
-        _sprintAction = map.FindAction("Sprint");
-        _crouchAction = map.FindAction("Crouch");
-        _interactAction = map.FindAction("Interact");
-        _flashlightAction = map.FindAction("Flashlight");
-        _pauseAction = map.FindAction("Pause");
+    [SerializeField] private MouseController _mouseController;
+    [SerializeField] private JumpController _jumpController;
+    [SerializeField] private CrouchController _crouchController;
+    [SerializeField] private FlashlightController _flashlightController;
+    [SerializeField] private AnimationController _animationController;
+    [SerializeField] private DoorInteractionController _doorInteractionController;
 
-        _rotatable = _mouseController;
-        _rotatable.Init(_lookAction, _settings.Sensitivity);
+    [Header("Settings")]
+    [Space]
 
-        _jump = _jumpController;
-        _jump.Init(_jumpAction, 5f, _jumpController.GroundCheck, 0.4f);
+    [SerializeField] private float _walkSpeed = 2f;
+    [SerializeField] private float _runSpeed = 5f;
 
-        _crouch = _crouchController;
-        _crouch.Init(_crouchAction, _crouchController.PlayerCollider, _crouchController.HeadChecker,
-                     _crouchController.HeadCheckRadius, _crouchController.CrouchCameraOffset, _animationController);
+    [Header("Components")]
+    [Space]
 
-        _flashlight = _flashlightController;
-        _flashlight.Init(_flashlightAction, _flashlightController.FlashlightGO);
+    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private Animator _playerAnimator;
 
-        _doorController = _doorInteractionController;
-        _doorController.Init(_interactAction, _mouseController.Camera, _doorInteractionController.InteractDistance,
-                             show => _ui.ShowInteractPrompt(show));
+    private IMovementStrategy _currentStategy;
+    private IMovementStrategy _walkStrategy;
+    private IMovementStrategy _runStrategy;
 
-        _animation = _animationController;
-        _walkStrategy = new MovementStrategy(_moveAction, _animation, _rb, _walkSpeed, MovementState.Walk);
-        _runStrategy = new MovementStrategy(_moveAction, _animation, _rb, _runSpeed, MovementState.Run);
-        _currentStrategy = _walkStrategy;
-    }
+    private IRotatable _rotatable;
+    private IJump _jump;
+    private ICrouch _crouch;
+    private IFlashlight _flashlight;
+    private IAnimation _animation;
+    private IDoorController _doorController;
 
     private void OnEnable()
     {
-        // ¬ключаем карту "Player" дл€ Input System
-        _settings.InputActions.FindActionMap("Player")?.Enable();
+        SettingsManager.Instance.GetInputActionsAsset().FindActionMap("Player")?.Enable();
     }
 
     private void OnDisable()
     {
-        _settings.InputActions.FindActionMap("Player")?.Disable();
+        SettingsManager.Instance.GetInputActionsAsset().FindActionMap("Player")?.Disable();
+    }
+
+    private void Awake()
+    {
+        _moveAction = SettingsManager.Instance.GetAction("Player", "Move");
+        _lookAction = SettingsManager.Instance.GetAction("Player", "Look");
+        _crouchAction = SettingsManager.Instance.GetAction("Player", "Crouch");
+        _jumpAction = SettingsManager.Instance.GetAction("Player", "Jump");
+        _sprintAction = SettingsManager.Instance.GetAction("Player", "Sprint");
+        _interactAction = SettingsManager.Instance.GetAction("Player", "Interact");
+        _flashlightAction = SettingsManager.Instance.GetAction("Player", "Flashlight");
+        _pauseActionPlayer = SettingsManager.Instance.GetAction("Player", "Pause");
+    }
+
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody>();
+
+        _rotatable = _mouseController;
+        _jump = _jumpController;
+        _crouch = _crouchController;
+        _flashlight = _flashlightController;
+        _animation = _animationController;
+        _doorController = _doorInteractionController;
+
+        _walkStrategy = new WalkMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction,  _animation, _rb, _walkSpeed);
+        _runStrategy = new RunMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction, _animation, _rb, _runSpeed);
+        _currentStategy = _walkStrategy;
+
+        _rotatable?.Init(SettingsManager.Instance.GetInputActionsAsset(), _lookAction);
+        _jump?.Init(SettingsManager.Instance.GetInputActionsAsset(), _jumpAction);
+        _crouch?.Init(SettingsManager.Instance.GetInputActionsAsset(), _crouchAction, _mouseController.GetCamera(), _animation);
+        _flashlight?.Init(SettingsManager.Instance.GetInputActionsAsset(), _flashlightAction);
+        _doorController?.Init(_interactAction, _mouseController.GetCamera());
+
     }
 
     private void Update()
     {
-        HandlePauseToggle();
+        HandlePauseInput();
 
         if (GameManager.Instance.CurrentState != GameState.Playing) return;
 
-        HandleMovementSwitch();
-        _rotatable.HandleInput();
-        _jump.HandleInput(_rb);
-        _crouch.HandleInput();
-        _flashlight.HandleInput();
-        _doorController.HandleInteraction();
+        if (_crouch != null && _crouch.GetWantsToStant())
+        {
+            _currentStategy = _walkStrategy;
+        }
+        else if (Input.GetKey(KeyCode.LeftShift) || _sprintAction.IsPressed() || _crouch != null && _crouch.GetWantsToStant())
+        {
+            _currentStategy = _runStrategy;
+        }
+        else
+        {
+            _currentStategy = _walkStrategy;
+        }
+
+        _rotatable?.HandleInput();
+
+        _jump?.HandleInput(_rb);
+
+        _crouch?.HandleInput();
+
+        _flashlight?.HandleInput();
+
+        _doorController?.FindDoorAndInteract();
     }
 
     private void FixedUpdate()
     {
         if (GameManager.Instance.CurrentState != GameState.Playing) return;
 
-        _jump.CheckGround();
-        _currentStrategy.Move(transform);
-        _rotatable.Rotate(_rb);
+        Vector3 extraGravity = Physics.gravity * (2f - 1);
+        _rb.AddForce(extraGravity, ForceMode.Acceleration);
+
+        _jump?.CheckGround();
+
+        _currentStategy?.Move(transform);
+        _rotatable?.Rotate(_rb);
     }
 
-    private void HandlePauseToggle()
+    private void HandlePauseInput()
     {
-        if (_pauseAction.WasPressedThisFrame())
+        if (_pauseActionPlayer.WasPressedThisFrame() || Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameManager.Instance.CurrentState == GameState.Playing)
-                _ui.OpenPauseMenu();
+            {
+                UIManager.Instance.OpenPauseMenu();
+            }
             else if (GameManager.Instance.CurrentState == GameState.Pause)
-                _ui.ClosePauseMenu();
+            {
+                UIManager.Instance.ClosePauseMenu();
+            }
         }
     }
 
-    private void HandleMovementSwitch()
-    {
-        // ≈сли персонаж в приседе Ч только ходьба
-        if (_crouch.IsCrouching)
-        {
-            _currentStrategy = _walkStrategy;
-            return;
-        }
-
-        // ≈сли удерживаетс€ shift или нажато действие Sprint Ч бег
-        bool sprintPressed = _sprintAction.ReadValue<float>() > 0.1f;
-        _currentStrategy = sprintPressed ? _runStrategy : _walkStrategy;
-    }
 }
