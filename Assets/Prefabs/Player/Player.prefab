@@ -548,7 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerCollider: {fileID: 3263674814055072688}
-  _crouchCameraPosition: {x: 0, y: -2, z: 0}
+  _crouchCameraPosition: {x: 0, y: -0.2, z: 0}
   _headChecker: {fileID: 6428367301064019479}
   _headCheckRadius: 0.25
   _headObstacleLayer:
