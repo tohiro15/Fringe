@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class RunMovement : IMovementStrategy
 {
-    private float _speed;
+    public float Speed { get; }
     private IAnimation _animation;
 
     private Rigidbody _rigidbody;
@@ -20,10 +20,10 @@ public class RunMovement : IMovementStrategy
 
         _animation = animation;
         _rigidbody = rigidbody;
-        _speed = speed;
+        Speed = speed;
     }
 
-    public float GetSpeed() => _speed;
+    public float GetSpeed() => Speed;
 
     public void Move(Transform transform)
     {
@@ -33,7 +33,7 @@ public class RunMovement : IMovementStrategy
             float z = Input.GetAxisRaw("Vertical");
 
             Vector3 input = transform.forward * z + transform.right * x;
-            Vector3 direction = input.normalized * _speed * Time.deltaTime;
+            Vector3 direction = input.normalized * Speed * Time.deltaTime;
             _rigidbody.MovePosition(_rigidbody.position + direction);
 
             HandleAnimation(input);
@@ -43,7 +43,7 @@ public class RunMovement : IMovementStrategy
             _moveAmt = _moveAction.ReadValue<Vector2>();
 
             Vector3 input = transform.forward * _moveAmt.y + transform.right * _moveAmt.x;
-            Vector3 direction = input.normalized * _speed * Time.deltaTime;
+            Vector3 direction = input.normalized * Speed * Time.deltaTime;
             _rigidbody.MovePosition(_rigidbody.position + direction);
 
             HandleAnimation(input);

@@ -36,6 +36,9 @@ public class SettingsManager : MonoBehaviour, ISettings
 
     private float _mouseSensitivity = 10f;
 
+    public InputActionAsset InputActions => _inputActions;
+    public float Sensitivity => _mouseSensitivity;
+
     private bool _windowMode = false;
 
     private void Start()
@@ -45,6 +48,8 @@ public class SettingsManager : MonoBehaviour, ISettings
 
         if (_SFXAudioMixer == null) Debug.LogError("Микшер SFX - не инициализирован!");
         if (_musicAudioMixer == null) Debug.LogError("Микшер Music - не инициализирован!");
+
+        LoadSettings();
     }
 
     #region QualitySettings
@@ -150,10 +155,6 @@ public class SettingsManager : MonoBehaviour, ISettings
         _mouseSensitivity = newSensitivity;
     }
 
-    public float GetSensitivity()
-    {
-        return _mouseSensitivity;
-    }
     #endregion
 
     #region ControlSettings
@@ -169,4 +170,22 @@ public class SettingsManager : MonoBehaviour, ISettings
     }
 
     #endregion
+
+    public void LoadSettings()
+    {
+        _mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 10f);
+        _currentQualityLevel = PlayerPrefs.GetInt("QualityLevel", QualitySettings.GetQualityLevel());
+        _windowMode = PlayerPrefs.GetInt("WindowMode", 0) == 1;
+        ChangeQuality(_currentQualityLevel);
+        Screen.fullScreen = !_windowMode;
+    }
+
+    public void SaveSettings()
+    {
+        PlayerPrefs.SetFloat("MouseSensitivity", _mouseSensitivity);
+        PlayerPrefs.SetInt("QualityLevel", _currentQualityLevel);
+        PlayerPrefs.SetInt("WindowMode", _windowMode ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
 }
