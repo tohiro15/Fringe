@@ -1,0 +1,548 @@
+fileFormatVersion: 2
+guid: 7b1d85d386c78db46a6c36ceb9e41486
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: 1
+    100004: 2
+    100006: 3
+    100008: 4
+    100010: 5
+    100012: d_dom_2et_14
+    100014: d_dom_2et_16
+    100016: d_dom_2et_25
+    100018: d_garage_3
+    100020: d_garage_4
+    100022: d_garage_5
+    100024: d_garage_6
+    100026: d_garage_7
+    100028: d_gaz_avtomat
+    100030: d_pallet
+    100032: d_put_budka_41
+    100034: dom1
+    100036: dom2
+    100038: e30_kafe
+    100040: e30_kafe_shinomontaz1
+    100042: e30_sadovod
+    100044: e30_shinomontaz
+    100046: e30_shinomontaz2
+    100048: e30_stroyrinok
+    100050: Group001
+    100052: omsk_avtomagazin10
+    100054: omsk_avtomagazin11
+    100056: omsk_avtomagazin14
+    100058: omsk_avtomagazin7
+    100060: omsk_stela_m51
+    100062: omsk_stela_mega
+    100064: r254_celaya_fura
+    100066: r254_gazprom_sto
+    100068: r254_isilkul_dom4
+    100070: r254_isilkul_transnefteprodukt
+    100072: r254_kafe_tatyana
+    100074: r254_kafe_tatyana2
+    100076: r254_maryanovka_kafe
+    100078: r254_old_dps
+    100080: r254_omskneft1
+    100082: r254_poverstation
+    100084: r254_zakusochnaya_berezka
+    100086: r402_abatskiy_rayon
+    100088: r402_abatskoe_shinomontaz
+    100090: r402_borovoe_angar5
+    100092: r402_ishim_domik12
+    100094: r402_ishim_domik9
+    100096: r402_ishim_gazprom_angar
+    100098: r402_ishim_PATP
+    100100: r402_ishim_sapfir
+    400000: //RootNode
+    400002: 1
+    400004: 2
+    400006: 3
+    400008: 4
+    400010: 5
+    400012: d_dom_2et_14
+    400014: d_dom_2et_16
+    400016: d_dom_2et_25
+    400018: d_garage_3
+    400020: d_garage_4
+    400022: d_garage_5
+    400024: d_garage_6
+    400026: d_garage_7
+    400028: d_gaz_avtomat
+    400030: d_pallet
+    400032: d_put_budka_41
+    400034: dom1
+    400036: dom2
+    400038: e30_kafe
+    400040: e30_kafe_shinomontaz1
+    400042: e30_sadovod
+    400044: e30_shinomontaz
+    400046: e30_shinomontaz2
+    400048: e30_stroyrinok
+    400050: Group001
+    400052: omsk_avtomagazin10
+    400054: omsk_avtomagazin11
+    400056: omsk_avtomagazin14
+    400058: omsk_avtomagazin7
+    400060: omsk_stela_m51
+    400062: omsk_stela_mega
+    400064: r254_celaya_fura
+    400066: r254_gazprom_sto
+    400068: r254_isilkul_dom4
+    400070: r254_isilkul_transnefteprodukt
+    400072: r254_kafe_tatyana
+    400074: r254_kafe_tatyana2
+    400076: r254_maryanovka_kafe
+    400078: r254_old_dps
+    400080: r254_omskneft1
+    400082: r254_poverstation
+    400084: r254_zakusochnaya_berezka
+    400086: r402_abatskiy_rayon
+    400088: r402_abatskoe_shinomontaz
+    400090: r402_borovoe_angar5
+    400092: r402_ishim_domik12
+    400094: r402_ishim_domik9
+    400096: r402_ishim_gazprom_angar
+    400098: r402_ishim_PATP
+    400100: r402_ishim_sapfir
+    2100000: 'Material #62'
+    2300000: //RootNode
+    2300002: 1
+    2300004: 2
+    2300006: 3
+    2300008: 4
+    2300010: 5
+    2300012: d_dom_2et_14
+    2300014: d_dom_2et_16
+    2300016: d_dom_2et_25
+    2300018: d_garage_3
+    2300020: d_garage_4
+    2300022: d_garage_5
+    2300024: d_garage_6
+    2300026: d_garage_7
+    2300028: d_gaz_avtomat
+    2300030: d_pallet
+    2300032: d_put_budka_41
+    2300034: dom1
+    2300036: dom2
+    2300038: e30_kafe
+    2300040: e30_kafe_shinomontaz1
+    2300042: e30_sadovod
+    2300044: e30_shinomontaz
+    2300046: e30_shinomontaz2
+    2300048: e30_stroyrinok
+    2300050: omsk_avtomagazin10
+    2300052: omsk_avtomagazin11
+    2300054: omsk_avtomagazin14
+    2300056: omsk_avtomagazin7
+    2300058: omsk_stela_m51
+    2300060: omsk_stela_mega
+    2300062: r254_celaya_fura
+    2300064: r254_gazprom_sto
+    2300066: r254_isilkul_dom4
+    2300068: r254_isilkul_transnefteprodukt
+    2300070: r254_kafe_tatyana
+    2300072: r254_kafe_tatyana2
+    2300074: r254_maryanovka_kafe
+    2300076: r254_old_dps
+    2300078: r254_omskneft1
+    2300080: r254_poverstation
+    2300082: r254_zakusochnaya_berezka
+    2300084: r402_abatskiy_rayon
+    2300086: r402_abatskoe_shinomontaz
+    2300088: r402_borovoe_angar5
+    2300090: r402_ishim_domik12
+    2300092: r402_ishim_domik9
+    2300094: r402_ishim_gazprom_angar
+    2300096: r402_ishim_PATP
+    2300098: r402_ishim_sapfir
+    3300000: //RootNode
+    3300002: 1
+    3300004: 2
+    3300006: 3
+    3300008: 4
+    3300010: 5
+    3300012: d_dom_2et_14
+    3300014: d_dom_2et_16
+    3300016: d_dom_2et_25
+    3300018: d_garage_3
+    3300020: d_garage_4
+    3300022: d_garage_5
+    3300024: d_garage_6
+    3300026: d_garage_7
+    3300028: d_gaz_avtomat
+    3300030: d_pallet
+    3300032: d_put_budka_41
+    3300034: dom1
+    3300036: dom2
+    3300038: e30_kafe
+    3300040: e30_kafe_shinomontaz1
+    3300042: e30_sadovod
+    3300044: e30_shinomontaz
+    3300046: e30_shinomontaz2
+    3300048: e30_stroyrinok
+    3300050: omsk_avtomagazin10
+    3300052: omsk_avtomagazin11
+    3300054: omsk_avtomagazin14
+    3300056: omsk_avtomagazin7
+    3300058: omsk_stela_m51
+    3300060: omsk_stela_mega
+    3300062: r254_celaya_fura
+    3300064: r254_gazprom_sto
+    3300066: r254_isilkul_dom4
+    3300068: r254_isilkul_transnefteprodukt
+    3300070: r254_kafe_tatyana
+    3300072: r254_kafe_tatyana2
+    3300074: r254_maryanovka_kafe
+    3300076: r254_old_dps
+    3300078: r254_omskneft1
+    3300080: r254_poverstation
+    3300082: r254_zakusochnaya_berezka
+    3300084: r402_abatskiy_rayon
+    3300086: r402_abatskoe_shinomontaz
+    3300088: r402_borovoe_angar5
+    3300090: r402_ishim_domik12
+    3300092: r402_ishim_domik9
+    3300094: r402_ishim_gazprom_angar
+    3300096: r402_ishim_PATP
+    3300098: r402_ishim_sapfir
+    4300000: r402_ishim_sapfir
+    4300002: r402_ishim_PATP
+    4300004: r402_ishim_gazprom_angar
+    4300006: r402_ishim_domik12
+    4300008: r402_ishim_domik9
+    4300010: dom2
+    4300012: dom1
+    4300014: 3
+    4300016: 4
+    4300018: 5
+    4300020: 2
+    4300022: 1
+    4300024: r402_borovoe_angar5
+    4300026: r402_abatskoe_shinomontaz
+    4300028: r402_abatskiy_rayon
+    4300030: r254_zakusochnaya_berezka
+    4300032: r254_poverstation
+    4300034: r254_omskneft1
+    4300036: r254_old_dps
+    4300038: r254_maryanovka_kafe
+    4300040: r254_kafe_tatyana2
+    4300042: r254_kafe_tatyana
+    4300044: r254_isilkul_transnefteprodukt
+    4300046: r254_isilkul_dom4
+    4300048: r254_gazprom_sto
+    4300050: r254_celaya_fura
+    4300052: omsk_stela_mega
+    4300054: omsk_stela_m51
+    4300056: omsk_avtomagazin14
+    4300058: omsk_avtomagazin11
+    4300060: omsk_avtomagazin10
+    4300062: omsk_avtomagazin7
+    4300064: e30_stroyrinok
+    4300066: e30_shinomontaz2
+    4300068: e30_shinomontaz
+    4300070: e30_sadovod
+    4300072: e30_kafe_shinomontaz1
+    4300074: e30_kafe
+    4300076: d_put_budka_41
+    4300078: d_pallet
+    4300080: d_gaz_avtomat
+    4300082: d_garage_7
+    4300084: d_garage_6
+    4300086: d_garage_5
+    4300088: d_garage_4
+    4300090: d_garage_3
+    4300092: d_dom_2et_25
+    4300094: d_dom_2et_16
+    4300096: d_dom_2et_14
+    6400000: //RootNode
+    6400002: 1
+    6400004: 2
+    6400006: 3
+    6400008: 4
+    6400010: 5
+    6400012: d_dom_2et_14
+    6400014: d_dom_2et_16
+    6400016: d_dom_2et_25
+    6400018: d_garage_3
+    6400020: d_garage_4
+    6400022: d_garage_5
+    6400024: d_garage_6
+    6400026: d_garage_7
+    6400028: d_gaz_avtomat
+    6400030: d_pallet
+    6400032: d_put_budka_41
+    6400034: dom1
+    6400036: dom2
+    6400038: e30_kafe
+    6400040: e30_kafe_shinomontaz1
+    6400042: e30_sadovod
+    6400044: e30_shinomontaz
+    6400046: e30_shinomontaz2
+    6400048: e30_stroyrinok
+    6400050: omsk_avtomagazin10
+    6400052: omsk_avtomagazin11
+    6400054: omsk_avtomagazin14
+    6400056: omsk_avtomagazin7
+    6400058: omsk_stela_m51
+    6400060: omsk_stela_mega
+    6400062: r254_celaya_fura
+    6400064: r254_gazprom_sto
+    6400066: r254_isilkul_dom4
+    6400068: r254_isilkul_transnefteprodukt
+    6400070: r254_kafe_tatyana
+    6400072: r254_kafe_tatyana2
+    6400074: r254_maryanovka_kafe
+    6400076: r254_old_dps
+    6400078: r254_omskneft1
+    6400080: r254_poverstation
+    6400082: r254_zakusochnaya_berezka
+    6400084: r402_abatskiy_rayon
+    6400086: r402_abatskoe_shinomontaz
+    6400088: r402_borovoe_angar5
+    6400090: r402_ishim_domik12
+    6400092: r402_ishim_domik9
+    6400094: r402_ishim_gazprom_angar
+    6400096: r402_ishim_PATP
+    6400098: r402_ishim_sapfir
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01 - Default
+    second: {fileID: 2100000, guid: 964708ca939363d44836d36197567362, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1.m.tbumptex
+    second: {fileID: 2100000, guid: 2436559d3fdd7cf4abbe10a8b988042c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #0'
+    second: {fileID: 2100000, guid: 89182a3e09fa80b44958bb66eacaef67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #1'
+    second: {fileID: 2100000, guid: fece4b16d1fd9834f9b963cff076112c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #100'
+    second: {fileID: 2100000, guid: 07f7f1ece75a4354ba0a295919cbab8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #14'
+    second: {fileID: 2100000, guid: 2008ac409b79d6b429de2be7a6d6cb4b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #15'
+    second: {fileID: 2100000, guid: 5cfe1fe9f0bfc4c4dab7892624c730c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #18'
+    second: {fileID: 2100000, guid: 74a8cc9509da6d24aaf3ae621ae0db18, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #19'
+    second: {fileID: 2100000, guid: 2aaf417b0301c2145b786505ca7eb95e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2'
+    second: {fileID: 2100000, guid: 847f3aa145ec51b46aba7f73d004117d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #20'
+    second: {fileID: 2100000, guid: 79c57fb3b243e904ea70a875c95cf87c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #21'
+    second: {fileID: 2100000, guid: d505aecdc0ce1e441beef8d484d1b22b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #23'
+    second: {fileID: 2100000, guid: bd446168402ca574f9281b57db29f304, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #28'
+    second: {fileID: 2100000, guid: 7c6767daf02e4054ab0a48a6df976bef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #29'
+    second: {fileID: 2100000, guid: e9409316ba4e08043bd9f612513117b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #3'
+    second: {fileID: 2100000, guid: 5a9dd2a3331c55842aefc9009e5cc018, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #31'
+    second: {fileID: 2100000, guid: 75344d0c009c0084b95291d036232fb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #33'
+    second: {fileID: 2100000, guid: 28ed5a8094046524493d13d438211656, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #35'
+    second: {fileID: 2100000, guid: d002943b317ada04dbc6609cb4e1c7ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #37'
+    second: {fileID: 2100000, guid: bb63ded269cd3194b80bfbcaf3a39e1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #4'
+    second: {fileID: 2100000, guid: 28c2217f548dcfb4287b5955c72d657c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #40'
+    second: {fileID: 2100000, guid: 5eab70c2b2ed4e14590bc7baeccd5103, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #46'
+    second: {fileID: 2100000, guid: 2a94ba7fa2445234d8cdf6394868d2dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #47'
+    second: {fileID: 2100000, guid: 2fa3543250082ff43b651962ef5a0817, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #48'
+    second: {fileID: 2100000, guid: fa90f512ad603fd43a9bde0736b7099d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #49'
+    second: {fileID: 2100000, guid: 2ae0fbf3512b4fd468a6096bc52e1b9d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #50'
+    second: {fileID: 2100000, guid: 39326656ea6857b4cab4b82f407e540b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #52'
+    second: {fileID: 2100000, guid: 157b72f77c28f9849bc237f921724fea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #62'
+    second: {fileID: 2100000, guid: ca88ca1ac9461de479607f2ad3c4de28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #7'
+    second: {fileID: 2100000, guid: 6c4c0fb969a7e7b41b507280ff073da6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #95'
+    second: {fileID: 2100000, guid: f2272cdf2901e6c4bb89c9fa42654a51, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
