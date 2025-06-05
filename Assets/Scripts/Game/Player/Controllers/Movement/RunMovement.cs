@@ -53,8 +53,8 @@ public class RunMovement : IMovementStrategy
     public void HandleAnimation(Vector3 inputDirection)
     {
         if (inputDirection == Vector3.zero)
-            _animation.PlayIdle();
+            _animation?.PlayIdle();
         else
-            _animation.PlayRun();
+            _animation?.PlayRun();
     }
 }

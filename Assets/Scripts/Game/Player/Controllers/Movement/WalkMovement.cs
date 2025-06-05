@@ -54,8 +54,8 @@ public class WalkMovement : IMovementStrategy
     public void HandleAnimation(Vector3 inputDirection)
     {
         if (inputDirection == Vector3.zero)
-            _animation.PlayIdle();
+            _animation?.PlayIdle();
         else
-            _animation.PlayWalk();
+            _animation?.PlayWalk();
     }
 }
