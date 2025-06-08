@@ -393,7 +393,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 2e0a047ef09a727499e641e0df9313ad, type: 3}
   m_Resource: {fileID: 8300000, guid: 2e0a047ef09a727499e641e0df9313ad, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -402,7 +402,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 10
+  MaxDistance: 4
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -613,7 +613,7 @@ Light:
   m_InnerSpotAngle: 102.01076
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
