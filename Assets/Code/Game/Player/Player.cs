@@ -12,15 +12,14 @@ public class Player : MonoBehaviour
     private InputAction _flashlightAction;
     private InputAction _pauseActionPlayer;
 
-    [Header ("Controllers")]
-    [Space]
+    //Controllers
 
-    [SerializeField] private MouseController _mouseController;
-    [SerializeField] private JumpController _jumpController;
-    [SerializeField] private CrouchController _crouchController;
-    [SerializeField] private FlashlightController _flashlightController;
-    [SerializeField] private AnimationController _animationController;
-    [SerializeField] private DoorInteractionController _doorInteractionController;
+    private MouseController _mouseController;
+    private JumpController _jumpController;
+    private CrouchController _crouchController;
+    private FlashlightController _flashlightController;
+    private AnimationController _animationController;
+    private DoorInteractionController _doorInteractionController;
 
     [Header("Settings")]
     [Space]
@@ -43,7 +42,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Rigidbody _rb;
 
-    private IMovementStrategy _currentStategy;
+    private IMovementStrategy _currentStrategy ;
     private IMovementStrategy _walkStrategy;
     private IMovementStrategy _runStrategy;
 
@@ -66,6 +65,13 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        _mouseController = GetComponent<MouseController>();
+        _jumpController = GetComponent<JumpController>();
+        _crouchController = GetComponent<CrouchController>();
+        _flashlightController = GetComponent<FlashlightController>();
+        _animationController = GetComponent<AnimationController>();
+        _doorInteractionController = GetComponent<DoorInteractionController>();
+
         _moveAction = SettingsManager.Instance.GetAction("Player", "Move");
         _lookAction = SettingsManager.Instance.GetAction("Player", "Look");
         _crouchAction = SettingsManager.Instance.GetAction("Player", "Crouch");
@@ -87,14 +93,14 @@ public class Player : MonoBehaviour
         _animation = _animationController;
         _doorController = _doorInteractionController;
 
-        _walkStrategy = new WalkMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction,  _animation, _rb, _walkSpeed);
-        _runStrategy = new RunMovement(SettingsManager.Instance.GetInputActionsAsset(), _moveAction, _animation, _rb, _runSpeed);
-        _currentStategy = _walkStrategy;
+        _walkStrategy = new WalkMovement(_moveAction,  _animation, _rb, _walkSpeed);
+        _runStrategy = new RunMovement(_moveAction, _animation, _rb, _runSpeed);
+        _currentStrategy  = _walkStrategy;
 
-        _rotatable?.Init(SettingsManager.Instance.GetInputActionsAsset(), _lookAction);
-        _jump?.Init(SettingsManager.Instance.GetInputActionsAsset(), _jumpAction);
-        _crouch?.Init(SettingsManager.Instance.GetInputActionsAsset(), _crouchAction, _mouseController.GetCamera(), _animation);
-        _flashlight?.Init(SettingsManager.Instance.GetInputActionsAsset(), _flashlightAction);
+        _rotatable?.Init(_lookAction);
+        _jump?.Init(_jumpAction);
+        _crouch?.Init(_crouchAction, _mouseController.GetCamera(), _animation);
+        _flashlight?.Init(_flashlightAction);
         _doorController?.Init(_interactAction, _mouseController.GetCamera());
 
     }
@@ -107,15 +113,15 @@ public class Player : MonoBehaviour
 
         if (_crouch != null && _crouch.GetWantsToStant())
         {
-            _currentStategy = _walkStrategy;
+            _currentStrategy  = _walkStrategy;
         }
-        else if (Input.GetKey(KeyCode.LeftShift) || _sprintAction.IsPressed() || _crouch != null && _crouch.GetWantsToStant())
+        else if (_sprintAction.IsPressed() || _crouch != null && _crouch.GetWantsToStant())
         {
-            _currentStategy = _runStrategy;
+            _currentStrategy  = _runStrategy;
         }
         else
         {
-            _currentStategy = _walkStrategy;
+            _currentStrategy  = _walkStrategy;
         }
 
         _rotatable?.HandleInput();
@@ -138,13 +144,13 @@ public class Player : MonoBehaviour
 
         _jump?.CheckGround();
 
-        _currentStategy?.Move(transform);
+        _currentStrategy ?.Move(transform);
         _rotatable?.Rotate(_rb);
     }
 
     private void HandlePauseInput()
     {
-        if (_pauseActionPlayer.WasPressedThisFrame() || Input.GetKeyDown(KeyCode.Escape))
+        if (_pauseActionPlayer.WasPressedThisFrame())
         {
             if (GameManager.Instance.CurrentState == GameState.Playing)
             {

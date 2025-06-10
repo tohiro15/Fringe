@@ -8,14 +8,12 @@ public class RunMovement : IMovementStrategy
 
     private Rigidbody _rigidbody;
 
-    private InputActionAsset _inputActions;
     private InputAction _moveAction;
 
     private Vector2 _moveAmt;
 
-    public RunMovement(InputActionAsset inputActions, InputAction moveAction, IAnimation animation, Rigidbody rigidbody, float speed)
+    public RunMovement(InputAction moveAction, IAnimation animation, Rigidbody rigidbody, float speed)
     {
-        _inputActions = inputActions;
         _moveAction = moveAction;
 
         _animation = animation;
@@ -27,27 +25,13 @@ public class RunMovement : IMovementStrategy
 
     public void Move(Transform transform)
     {
-        if (_inputActions == null && _moveAction == null)
-        {
-            float x = Input.GetAxisRaw("Horizontal");
-            float z = Input.GetAxisRaw("Vertical");
+        _moveAmt = _moveAction.ReadValue<Vector2>();
 
-            Vector3 input = transform.forward * z + transform.right * x;
-            Vector3 direction = input.normalized * _speed * Time.deltaTime;
-            _rigidbody.MovePosition(_rigidbody.position + direction);
+        Vector3 input = transform.forward * _moveAmt.y + transform.right * _moveAmt.x;
+        Vector3 direction = input.normalized * _speed * Time.deltaTime;
+        _rigidbody.MovePosition(_rigidbody.position + direction);
 
-            HandleAnimation(input);
-        }
-        else
-        {
-            _moveAmt = _moveAction.ReadValue<Vector2>();
-
-            Vector3 input = transform.forward * _moveAmt.y + transform.right * _moveAmt.x;
-            Vector3 direction = input.normalized * _speed * Time.deltaTime;
-            _rigidbody.MovePosition(_rigidbody.position + direction);
-
-            HandleAnimation(input);
-        }
+        HandleAnimation(input);
     }
 
     public void HandleAnimation(Vector3 inputDirection)

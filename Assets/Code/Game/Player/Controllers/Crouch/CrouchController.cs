@@ -20,7 +20,6 @@ public class CrouchController : MonoBehaviour, ICrouch
     private float _defaultColliderHeight;
     private float _defaultColliderRadius;
 
-    private InputActionAsset _inputAction;
     private InputAction _crouchAction;
 
     private Vector3 _defaultCenter;
@@ -32,7 +31,7 @@ public class CrouchController : MonoBehaviour, ICrouch
 
     public bool GetIsCrouching() => _isCrouching;
     public bool GetWantsToStant() => _wantsToStand;
-    public void Init(InputActionAsset inputAction, InputAction crouchAction, Camera playerCamera, IAnimation animation)
+    public void Init(InputAction crouchAction, Camera playerCamera, IAnimation animation)
     {
         if (_playerCollider != null)
         {
@@ -50,14 +49,11 @@ public class CrouchController : MonoBehaviour, ICrouch
     }
     public void HandleInput()
     {
-        bool crouchKeyPressed = Input.GetKeyDown(KeyCode.LeftControl);
-        bool crouchKeyReleased = Input.GetKeyUp(KeyCode.LeftControl);
-
-        if ((crouchKeyPressed && !_isCrouching && _inputAction == null) || (_crouchAction.WasPerformedThisFrame() && !_isCrouching))
+        if ((!_isCrouching) || (_crouchAction.WasPerformedThisFrame() && !_isCrouching))
         {
             Crouch();
         }
-        else if ((crouchKeyReleased && _isCrouching && _inputAction == null) || (_crouchAction.WasReleasedThisFrame() && _isCrouching))
+        else if ((_isCrouching) || (_crouchAction.WasReleasedThisFrame() && _isCrouching))
         {
             _wantsToStand = true;
         }

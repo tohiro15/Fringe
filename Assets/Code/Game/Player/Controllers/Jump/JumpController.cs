@@ -6,7 +6,6 @@ public class JumpController : MonoBehaviour, IJump
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundDistance = 0.4f;
 
-    private InputActionAsset _inputAction;
     private InputAction _jumpAction;
 
     private bool _isGrounded;
@@ -20,9 +19,8 @@ public class JumpController : MonoBehaviour, IJump
         }
     }
 
-    public void Init(InputActionAsset inputAction, InputAction jumpAction)
+    public void Init(InputAction jumpAction)
     {
-        _inputAction = inputAction;
         _jumpAction = jumpAction;
     }
 
@@ -34,19 +32,9 @@ public class JumpController : MonoBehaviour, IJump
 
     public void HandleInput(Rigidbody rb, float jumpForce)
     {
-        if (_inputAction == null)
+        if (_jumpAction.WasPressedThisFrame() && _isGrounded)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
-            {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            }
-        }
-        else
-        {
-            if (_jumpAction.WasPressedThisFrame() && _isGrounded)
-            {
-                    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            }
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 }
