@@ -4,5 +4,5 @@ using UnityEngine.InputSystem;
 public interface IDoorController
 {
     void Init(InputAction interactAction, Camera playerCamera);
-    void FindDoorAndInteract();
+    void FindDoorAndInteract(float interactDistance);
 }

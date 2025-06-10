@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class JumpController : MonoBehaviour, IJump
 {
-    [SerializeField] private float _jumpForce = 5f;
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundDistance = 0.4f;
 
@@ -33,20 +32,20 @@ public class JumpController : MonoBehaviour, IJump
         Debug.Log($"IsGrounded: {_isGrounded}");
     }
 
-    public void HandleInput(Rigidbody rb)
+    public void HandleInput(Rigidbody rb, float jumpForce)
     {
         if (_inputAction == null)
         {
             if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
             {
-                rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
         else
         {
             if (_jumpAction.WasPressedThisFrame() && _isGrounded)
             {
-                    rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+                    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
     }

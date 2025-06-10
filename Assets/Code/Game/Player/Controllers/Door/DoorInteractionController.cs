@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class DoorInteractionController : MonoBehaviour, IDoorController
 {
-    [SerializeField] private float _interactDistance = 1.5f;
     private Camera _playerCamera;
     private InputAction _interactAction;
 
@@ -13,10 +12,10 @@ public class DoorInteractionController : MonoBehaviour, IDoorController
         _playerCamera = playerCamera;
     }
 
-    public void FindDoorAndInteract()
+    public void FindDoorAndInteract(float interactDistance)
     {
         Ray ray = new(_playerCamera.transform.position, _playerCamera.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, _interactDistance))
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
         {
             Transform hitTransform = hit.transform;
 

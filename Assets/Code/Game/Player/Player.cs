@@ -25,14 +25,23 @@ public class Player : MonoBehaviour
     [Header("Settings")]
     [Space]
 
+    [Header("Movement")]
+
     [SerializeField] private float _walkSpeed = 2f;
     [SerializeField] private float _runSpeed = 5f;
+
+    [Header("Jump")]
+
+    [SerializeField] private float _jumpForce = 5f;
+
+    [Header("Door Interaction")]
+
+    [SerializeField] private float _doorInteractDistance = 1.5f;
 
     [Header("Components")]
     [Space]
 
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] private Animator _playerAnimator;
 
     private IMovementStrategy _currentStategy;
     private IMovementStrategy _walkStrategy;
@@ -111,13 +120,13 @@ public class Player : MonoBehaviour
 
         _rotatable?.HandleInput();
 
-        _jump?.HandleInput(_rb);
+        _jump?.HandleInput(_rb, _jumpForce);
 
         _crouch?.HandleInput();
 
         _flashlight?.HandleInput();
 
-        _doorController?.FindDoorAndInteract();
+        _doorController?.FindDoorAndInteract(_doorInteractDistance);
     }
 
     private void FixedUpdate()
