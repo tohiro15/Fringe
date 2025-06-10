@@ -482,7 +482,6 @@ GameObject:
   - component: {fileID: 5042769799711177497}
   - component: {fileID: 3621239969730345321}
   - component: {fileID: 2918238683197908268}
-  - component: {fileID: 2982184192089353689}
   - component: {fileID: 8574908377720213512}
   - component: {fileID: 3471536571903059026}
   - component: {fileID: 4583297076473336785}
@@ -527,7 +526,7 @@ MonoBehaviour:
   _mouseController: {fileID: 5042769799711177497}
   _jumpController: {fileID: 3621239969730345321}
   _crouchController: {fileID: 2918238683197908268}
-  _flashlightController: {fileID: 2982184192089353689}
+  _flashlightController: {fileID: 0}
   _animationController: {fileID: 0}
   _doorInteractionController: {fileID: 8574908377720213512}
   _walkSpeed: 2
@@ -583,19 +582,6 @@ MonoBehaviour:
     m_Bits: 1
   _crouchHeight: 0.5
   _crouchRadius: 0.5
---- !u!114 &2982184192089353689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890435818913106974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ff6bfe02fe389c4aa9af9a559c22a23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _flashlight: {fileID: 241884846617093323}
 --- !u!114 &8574908377720213512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3159,6 +3145,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flashlight
       objectReference: {fileID: 0}
+    - target: {fileID: 6374411400390662758, guid: ca5e050bc42abeb4d87fb36d65d5bc95,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8059044758991541180, guid: ca5e050bc42abeb4d87fb36d65d5bc95,
         type: 3}
       propertyPath: m_Enabled
@@ -3173,12 +3164,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1686568549492767806}
   m_SourcePrefab: {fileID: 100100000, guid: ca5e050bc42abeb4d87fb36d65d5bc95, type: 3}
---- !u!1 &241884846617093323 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6374411400390662758, guid: ca5e050bc42abeb4d87fb36d65d5bc95,
-    type: 3}
-  m_PrefabInstance: {fileID: 6569957569833811629}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &414789734360401831 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6839996454481885450, guid: ca5e050bc42abeb4d87fb36d65d5bc95,
