@@ -169,4 +169,13 @@ public class SettingsManager : MonoBehaviour, ISettings
     }
 
     #endregion
+
+    public void SaveSettings()
+    {
+
+    }
+    public void LoadSettings()
+    {
+
+    }
 }

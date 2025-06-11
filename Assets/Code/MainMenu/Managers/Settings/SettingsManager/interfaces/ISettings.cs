@@ -25,4 +25,6 @@ public interface ISettings
     InputAction GetAction(string mapName, string actionName);
     InputActionAsset GetInputActionsAsset();
 
+    void SaveSettings();
+    void LoadSettings();
 }
