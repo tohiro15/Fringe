@@ -49,11 +49,13 @@ public class CrouchController : MonoBehaviour, ICrouch
     }
     public void HandleInput()
     {
-        if ((!_isCrouching) || (_crouchAction.WasPerformedThisFrame() && !_isCrouching))
+        if (_crouchAction.WasPressedThisFrame())
         {
-            Crouch();
+            if (!_isCrouching)
+                Crouch();
         }
-        else if ((_isCrouching) || (_crouchAction.WasReleasedThisFrame() && _isCrouching))
+
+        if (_crouchAction.WasReleasedThisFrame())
         {
             _wantsToStand = true;
         }
@@ -63,6 +65,8 @@ public class CrouchController : MonoBehaviour, ICrouch
             StandUp();
         }
     }
+
+
 
 
     public void Crouch()
@@ -95,6 +99,9 @@ public class CrouchController : MonoBehaviour, ICrouch
 
     public bool CanStandUp()
     {
-        return !Physics.CheckSphere(_headChecker.position, _headCheckRadius, _headObstacleLayer);
+        bool result = !Physics.CheckSphere(_headChecker.position, _headCheckRadius, _headObstacleLayer);
+        Debug.Log($"CanStandUp: {result}");
+        return result;
     }
+
 }

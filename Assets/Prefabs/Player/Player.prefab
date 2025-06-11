@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 9004837456135782664}
   - component: {fileID: 5042769799711177497}
   - component: {fileID: 3621239969730345321}
-  - component: {fileID: 2918238683197908268}
+  - component: {fileID: 6333189732172528559}
   - component: {fileID: 8574908377720213512}
   - component: {fileID: 3471536571903059026}
   - component: {fileID: 4583297076473336785}
@@ -523,16 +523,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b5f206a41541848a82a332e3abd6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseController: {fileID: 5042769799711177497}
-  _jumpController: {fileID: 3621239969730345321}
-  _crouchController: {fileID: 2918238683197908268}
-  _flashlightController: {fileID: 0}
-  _animationController: {fileID: 0}
-  _doorInteractionController: {fileID: 8574908377720213512}
   _walkSpeed: 2
   _runSpeed: 5
+  _jumpForce: 5
+  _doorInteractDistance: 1.5
   _rb: {fileID: 0}
-  _playerAnimator: {fileID: 4583297076473336785}
 --- !u!114 &5042769799711177497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,10 +553,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431b2ba64e0ef90419531fcd8d8699ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 5
   _groundCheck: {fileID: 551658007986869135}
   _groundDistance: 0.4
---- !u!114 &2918238683197908268
+--- !u!114 &6333189732172528559
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -579,7 +573,7 @@ MonoBehaviour:
   _headCheckRadius: 0.25
   _headObstacleLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
   _crouchHeight: 0.5
   _crouchRadius: 0.5
 --- !u!114 &8574908377720213512
@@ -594,7 +588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda48e2fccb9fdf40a9654dc83f72434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactDistance: 1.5
 --- !u!54 &3471536571903059026
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -111,24 +111,31 @@ public class Player : MonoBehaviour
 
         if (GameManager.Instance.CurrentState != GameState.Playing) return;
 
-        if (_crouch != null && _crouch.GetWantsToStant())
+        _crouch?.HandleInput();
+
+        if (_crouch != null && !_crouch.GetIsCrouching())
         {
-            _currentStrategy  = _walkStrategy;
-        }
-        else if (_sprintAction.IsPressed() || _crouch != null && _crouch.GetWantsToStant())
-        {
-            _currentStrategy  = _runStrategy;
+            if (_sprintAction.IsPressed())
+            {
+                _currentStrategy = _runStrategy;
+            }
+            else
+            {
+                _currentStrategy = _walkStrategy;
+            }
         }
         else
         {
-            _currentStrategy  = _walkStrategy;
+            _currentStrategy = _walkStrategy;
         }
+
 
         _rotatable?.HandleInput();
 
-        _jump?.HandleInput(_rb, _jumpForce);
-
-        _crouch?.HandleInput();
+        if (_crouch != null && !_crouch.GetIsCrouching())
+        {
+            _jump?.HandleInput(_rb, _jumpForce);
+        }
 
         _flashlight?.HandleInput();
 
