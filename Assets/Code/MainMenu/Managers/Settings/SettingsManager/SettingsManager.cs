@@ -33,10 +33,13 @@ public class SettingsManager : MonoBehaviour, ISettings
 
     private int _currentResolutionIndex;
     private int _currentQualityLevel;
+    private float _currentSFXVolume;
+    private float _currentMusicVolume;
 
     private float _mouseSensitivity = 10f;
 
     private bool _windowMode = false;
+    public bool IsChanged { get; private set; } = false;
 
     private void Start()
     {
@@ -45,6 +48,8 @@ public class SettingsManager : MonoBehaviour, ISettings
 
         if (_SFXAudioMixer == null) Debug.LogError("Микшер SFX - не инициализирован!");
         if (_musicAudioMixer == null) Debug.LogError("Микшер Music - не инициализирован!");
+
+        LoadSettings();
     }
 
     #region QualitySettings
@@ -52,6 +57,7 @@ public class SettingsManager : MonoBehaviour, ISettings
     {
         _currentQualityLevel = index;
         QualitySettings.SetQualityLevel(index);
+        IsChanged = true;
     }
 
     public int GetQualityLevel()
@@ -69,6 +75,8 @@ public class SettingsManager : MonoBehaviour, ISettings
             Resolution res = resolutions[index];
             Screen.SetResolution(res.width, res.height, Screen.fullScreen);
         }
+
+        IsChanged = true;
     }
 
     public int GetResolution()
@@ -113,8 +121,12 @@ public class SettingsManager : MonoBehaviour, ISettings
         if (_SFXAudioMixer == null) return;
 
         float volumePercent = Mathf.Clamp(value, 0.0001f, 100f);
+        _currentSFXVolume = volumePercent;
+
         float dB = Mathf.Log10(volumePercent / 100f) * 40f;
         _SFXAudioMixer.SetFloat("MainVolume", dB);
+
+        IsChanged = true;
     }
 
     public void ChangeMusicVolume(float value)
@@ -122,8 +134,12 @@ public class SettingsManager : MonoBehaviour, ISettings
         if (_musicAudioMixer == null) return;
 
         float volumePercent = Mathf.Clamp(value, 0.0001f, 100f);
+        _currentMusicVolume = volumePercent;
+
         float dB = Mathf.Log10(volumePercent / 100f) * 40f;
         _musicAudioMixer.SetFloat("MainVolume", dB);
+
+        IsChanged = true;
     }
 
     public float GetSFXVolume()
@@ -148,6 +164,8 @@ public class SettingsManager : MonoBehaviour, ISettings
     public void ChangeSensitivity(float newSensitivity)
     {
         _mouseSensitivity = newSensitivity;
+
+        IsChanged = true;
     }
 
     public float GetSensitivity()
@@ -172,10 +190,35 @@ public class SettingsManager : MonoBehaviour, ISettings
 
     public void SaveSettings()
     {
+        if (!IsChanged) return;
 
+        PlayerPrefs.SetInt("Resolution", _currentResolutionIndex);
+        PlayerPrefs.SetInt("Quality", _currentQualityLevel);
+        PlayerPrefs.SetFloat("SFXVolume", _currentSFXVolume);
+        PlayerPrefs.SetFloat("MusicVolume", _currentMusicVolume);
+        PlayerPrefs.SetFloat("Sensitivity", _mouseSensitivity);
+
+        PlayerPrefs.Save();
+
+        IsChanged = false;
     }
+
     public void LoadSettings()
     {
+        _currentResolutionIndex = PlayerPrefs.GetInt("Resolution");
+        ChangeResolution(_currentResolutionIndex);
+        _currentQualityLevel = PlayerPrefs.GetInt("Quality");
+        ChangeQuality(_currentQualityLevel);
 
+        _currentSFXVolume = PlayerPrefs.GetFloat("SFXVolume", 100f);
+        ChangeSFXVolume(_currentSFXVolume);
+        _currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 100f);
+        ChangeMusicVolume(_currentMusicVolume);
+
+        _mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 100f);
+        ChangeSensitivity(_mouseSensitivity);
+
+        IsChanged = false;
     }
+
 }

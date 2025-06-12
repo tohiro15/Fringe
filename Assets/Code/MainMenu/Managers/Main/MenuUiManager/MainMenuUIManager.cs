@@ -23,10 +23,12 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
     [SerializeField] private Button _settingsButton;
     [SerializeField] private Button _quitGameButton;
 
+
     [Header("Settings")]
     [Space]
 
     [Header("Buttons")]
+
     [SerializeField] private Button _exitButton;
 
     [Header("Chapter Selection")]
@@ -120,7 +122,6 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
         }
     }
 
-
     public void OpenSettingsMenu()
     {
         _settingsCanvas.gameObject.SetActive(true);
@@ -129,9 +130,14 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
 
     public void CloseSettingsMenu()
     {
-        SetCanvas(MenuState.Main);
-        _settingsCanvas?.gameObject.SetActive(false);
+        if (SettingsManager.Instance.IsChanged) SettingsUIManager.Instance.OpenConfirmPanel();
+        else
+        {
+            SetCanvas(MenuState.Main);
+            _settingsCanvas.gameObject.SetActive(false);
+        }
     }
+
     public void SetCanvas(MenuState state)
     {
         _mainMenuCanvas?.gameObject.SetActive(state == MenuState.Main);

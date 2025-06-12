@@ -18,8 +18,24 @@ public class SettingsUIManager : MonoBehaviour, ISettingsUI
         Instance = this;
     }
 
+    [Header("Panels")]
+
+    [SerializeField] private GameObject _confirmPanel;
+
+    [Header("Buttons")]
+
+    [Header("Settings")]
+
+    [SerializeField] private Button _applySettingsButton;
+
+    [Header("Confirm Panel")]
+
+    [SerializeField] private Button _confirmButton;
+    [SerializeField] private Button _revertButton;
+
     [Header("Settings")]
     [Space]
+
 
     [Header("Controllers")]
 
@@ -50,6 +66,17 @@ public class SettingsUIManager : MonoBehaviour, ISettingsUI
             SettingsCategory capturedCategory = section.Category;
             section.Button?.onClick.AddListener(() => OpenSettings(capturedCategory));
         }
+
+        _confirmPanel?.gameObject.SetActive(false);
+
+        _applySettingsButton?.onClick.RemoveAllListeners();
+        _applySettingsButton?.onClick.AddListener(ApplySettings);
+
+        _revertButton?.onClick.RemoveAllListeners();
+        _revertButton.onClick.AddListener(RevertSettings);
+
+        _confirmButton?.onClick.RemoveAllListeners();
+        _confirmButton?.onClick.AddListener(ConfirmSettings);
     }
 
     public void OpenSettings(SettingsCategory category)
@@ -63,5 +90,27 @@ public class SettingsUIManager : MonoBehaviour, ISettingsUI
             section.Panel?.SetActive(isActive);
             section.Label.text = isActive ? $"<u>{section.LabelName}</u>" : section.LabelName;
         }
+    }
+
+    public void OpenConfirmPanel()
+    {
+        _confirmPanel?.SetActive(true);
+    }
+
+    public void ConfirmSettings()
+    {
+        ApplySettings();
+        _confirmPanel?.SetActive(false);
+    }
+
+    public void ApplySettings()
+    {
+        SettingsManager.Instance.SaveSettings();
+    }
+
+    public void RevertSettings()
+    {
+        SettingsManager.Instance.LoadSettings();
+        _confirmPanel?.SetActive(false);
     }
 }
