@@ -9,25 +9,22 @@ public class ScreenSettingsUI : MonoBehaviour
     [SerializeField] private Image _windowModeEnableImage;
     [SerializeField] private TMP_Dropdown _resolutionDropdown;
 
-    private ISettings _settings;
-
-    public void Init(ISettings settings)
+    public void Init()
     {
-        _settings = settings;
 
         PopulateResolutionDropdown();
 
-        _windowModeEnableImage.gameObject.SetActive(_settings.GetIsWindowMode());
+        _windowModeEnableImage.gameObject.SetActive(SettingsManager.Instance.GetIsWindowMode());
         _windowModeButton.onClick.AddListener(ChangeWindowMode);
 
-        if(_resolutionDropdown != null && _settings != null) _resolutionDropdown.value = _settings.GetResolution();
-        _resolutionDropdown?.onValueChanged.AddListener(_settings.ChangeResolution);
+        if(_resolutionDropdown != null) _resolutionDropdown.value = SettingsManager.Instance.GetResolution();
+        _resolutionDropdown?.onValueChanged.AddListener(SettingsManager.Instance.ChangeResolution);
 
     }
     private void ChangeWindowMode()
     {
-        _settings.ChangeWindowMode();
-        _windowModeEnableImage.gameObject.SetActive(_settings.GetIsWindowMode());
+        SettingsManager.Instance.ChangeWindowMode();
+        _windowModeEnableImage.gameObject.SetActive(SettingsManager.Instance.GetIsWindowMode());
     }
 
     private void PopulateResolutionDropdown()

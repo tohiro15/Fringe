@@ -9,20 +9,17 @@ public class SoundSettingsUI : MonoBehaviour
 
     [SerializeField] private SoundType _soundType;
 
-    private ISettings _settings;
-
-    public void Init(ISettings settings)
+    public void Init()
     {
-        _settings = settings;
 
         switch (_soundType)
         {
             case SoundType.SFX:
-                _slider.value = _settings.GetSFXVolume();
+                _slider.value = SettingsManager.Instance.GetSFXVolume();
                 _slider.onValueChanged.AddListener(OnSFXVolumeChanged);
                 break;
             case SoundType.Music:
-                _slider.value = _settings.GetMusicVolume();
+                _slider.value = SettingsManager.Instance.GetMusicVolume();
                 _slider.onValueChanged.AddListener(OnMusicVolumeChanged);
                 break;
         }
@@ -32,13 +29,13 @@ public class SoundSettingsUI : MonoBehaviour
 
     private void OnSFXVolumeChanged(float value)
     {
-        _settings.ChangeSFXVolume(value);
+        SettingsManager.Instance.ChangeSFXVolume(value);
         UpdateVolumeLabel(value);
     }
 
     private void OnMusicVolumeChanged(float value)
     {
-        _settings.ChangeMusicVolume(value);
+        SettingsManager.Instance.ChangeMusicVolume(value);
         UpdateVolumeLabel(value);
     }
 

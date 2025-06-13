@@ -7,13 +7,9 @@ public class ControlSettingsUI : MonoBehaviour
     [SerializeField] private Slider _sensitivitySlider;
     [SerializeField] private TMP_Text _sensitivityText;
 
-    private ISettings _settings;
-
-    public void Init(ISettings settings)
+    public void Init()
     {
-        _settings = settings;
-
-        _sensitivitySlider.value = _settings.GetSensitivity() * 10f;
+        _sensitivitySlider.value = SettingsManager.Instance.GetSensitivity() * 10f;
         _sensitivitySlider.onValueChanged.AddListener(OnSliderValueChanged);
 
         UpdateControlLabel(_sensitivitySlider.value);
@@ -22,7 +18,7 @@ public class ControlSettingsUI : MonoBehaviour
     private void OnSliderValueChanged(float sliderValue)
     {
         float sensitivityNormalized = sliderValue / 10f;
-        _settings.ChangeSensitivity(sensitivityNormalized);
+        SettingsManager.Instance.ChangeSensitivity(sensitivityNormalized);
         UpdateControlLabel(sliderValue);
     }
 

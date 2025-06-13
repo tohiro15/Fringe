@@ -41,7 +41,7 @@ public class MainMenuUIManager : MonoBehaviour, IMainMenuUI
 
     private ChapterData _selectedChapter;
 
-    public void Init(ISettings settings, IGameFlow gameFlow)
+    public void Init(IGameFlow gameFlow)
     {
         if(_settingsCanvas != null) _settingsCanvas.gameObject.SetActive(false);
 

@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         _settingsUI = _settingsUIManager;
 
         _ui?.Init();
-        _settingsUI?.Init(SettingsManager.Instance);
+        _settingsUI?.Init();
 
         Debug.Log("Game Started");
 

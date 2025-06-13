@@ -1,6 +1,6 @@
 public interface ISettingsUI
 {
-    void Init(ISettings settings);
+    void Init();
     void OpenSettings(SettingsCategory category);
     void OpenConfirmPanel();
     void ConfirmSettings();

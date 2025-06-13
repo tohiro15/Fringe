@@ -50,15 +50,15 @@ public class SettingsUIManager : MonoBehaviour, ISettingsUI
 
     private SettingsCategory _currentCategory;
 
-    public void Init(ISettings settings)
+    public void Init()
     {
-        _screenSettingsUI?.Init(settings);
-        _qualitySettingsUI?.Init(settings);
-        _controlSettingsUI?.Init(settings);
+        _screenSettingsUI?.Init();
+        _qualitySettingsUI?.Init();
+        _controlSettingsUI?.Init();
 
         foreach (var soundSettings in _soundSettingsUI)
         {
-            soundSettings.Init(settings);
+            soundSettings.Init();
         }
 
         foreach (var section in _settingsSections)

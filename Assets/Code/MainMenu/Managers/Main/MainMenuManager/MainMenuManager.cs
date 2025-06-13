@@ -24,7 +24,6 @@ public class MainMenuManager : MonoBehaviour
     private IGameFlow _gameFlow;
     private IMainMenuUI _mainMenuUI;
     private IMainMenuSound _mainMenuSound;
-    private ISettings _settings;
     private ISettingsUI _settingsUI;
 
     private void Start()
@@ -35,12 +34,11 @@ public class MainMenuManager : MonoBehaviour
         _gameFlow = _gameFlowController;
 
         _mainMenuUI = _mainMenuUIManager;
-        _settings = _settingsManager;
         _mainMenuSound = _mainMenuSoundManager;
         _settingsUI = _settingsUIManager;
 
-        _mainMenuUI?.Init(_settings, _gameFlow);
-        _settingsUI.Init(_settings);
+        _mainMenuUI?.Init(_gameFlow);
+        _settingsUI.Init();
     }
 
     public IGameFlow GetGameFlow()

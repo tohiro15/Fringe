@@ -4,13 +4,9 @@ using UnityEngine;
 public class QualitySettingsUI : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown _qualityDropdown;
-
-    private ISettings _settings;
-    public void Init(ISettings settings)
+    public void Init()
     {
-        _settings = settings;
-
-        if (_qualityDropdown != null && _settings != null) _qualityDropdown.value = _settings.GetQualityLevel();
-        _qualityDropdown?.onValueChanged.AddListener(_settings.ChangeQuality);
+        if (_qualityDropdown != null) _qualityDropdown.value = SettingsManager.Instance.GetQualityLevel();
+        _qualityDropdown?.onValueChanged.AddListener(SettingsManager.Instance.ChangeQuality);
     }
 }

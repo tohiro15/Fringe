@@ -1,6 +1,6 @@
 public interface IMainMenuUI
 {
-    void Init(ISettings settings, IGameFlow gameFlow);
+    void Init(IGameFlow gameFlow);
     void OpenChapterSelectionMenu();
     void CloseChapterSelectionMenu();
     void SelectChapter(ChapterData chapter);

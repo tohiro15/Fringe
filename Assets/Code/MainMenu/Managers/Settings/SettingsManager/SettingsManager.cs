@@ -4,7 +4,7 @@ using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class SettingsManager : MonoBehaviour, ISettings
+public class SettingsManager : MonoBehaviour
 {
     public static SettingsManager Instance { get; private set; }
     private void Awake()
