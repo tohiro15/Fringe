@@ -1,6 +1,6 @@
 # My dream game project
 
-Welcome to the repository of my personal prototype of a horror project
+Welcome to the repository of my personal of a horror project
 
 This game is being developed with passion and dedication, combining everything I love about game design, storytelling, and immersive gameplay. It's not just a hobby - it's a journey to creating something truly meaningful, and I can't wait to share it with the world.
 
