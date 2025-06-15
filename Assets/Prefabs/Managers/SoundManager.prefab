@@ -48,9 +48,18 @@ MonoBehaviour:
   _flashlightAudioSource: {fileID: 2142312634134942472}
   _flashlightToggleSound: {fileID: 8300000, guid: 0326e687d530c8941b62b0043149b3fc,
     type: 3}
-  _singleDoorSound: {fileID: 0}
-  _doubleDoorSound: {fileID: 0}
-  _slidingDoorSound: {fileID: 0}
+  _singleDoorOpenSound: {fileID: 8300000, guid: 3efcaf9f56452c946a2f7cb74d0aada6,
+    type: 3}
+  _singleDoorCloseSound: {fileID: 8300000, guid: 2d18ea37688b6fa4699e27570b896b52,
+    type: 3}
+  _doubleDoorOpenSound: {fileID: 8300000, guid: 3efcaf9f56452c946a2f7cb74d0aada6,
+    type: 3}
+  _doubleDoorCloseSound: {fileID: 8300000, guid: 2d18ea37688b6fa4699e27570b896b52,
+    type: 3}
+  _slidingDoorOpenSound: {fileID: 8300000, guid: d1e4c5137b32e614a94874600faa23db,
+    type: 3}
+  _slidingDoorCloseSound: {fileID: 8300000, guid: 16ff232cde1f3ee408f75a0d28869a89,
+    type: 3}
 --- !u!82 &2142312634134942472
 AudioSource:
   m_ObjectHideFlags: 0

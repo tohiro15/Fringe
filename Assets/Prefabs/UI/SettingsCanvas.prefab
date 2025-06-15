@@ -5415,6 +5415,7 @@ GameObject:
   - component: {fileID: 2914322432040358915}
   - component: {fileID: 5091042836334642513}
   - component: {fileID: 5969456051682280755}
+  - component: {fileID: 4293036848376132576}
   m_Layer: 5
   m_Name: SettingsCanvas
   m_TagString: Untagged
@@ -5505,6 +5506,49 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4293036848376132576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2293515180776680855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8b6278cbec71d459ec1f7f770671ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _confirmPanel: {fileID: 6175989576138418900}
+  _applySettingsButton: {fileID: 7439219880929414018}
+  _confirmButton: {fileID: 2072540823274131747}
+  _revertButton: {fileID: 3299928476436202016}
+  _screenSettingsUI: {fileID: 6078801899030089425}
+  _qualitySettingsUI: {fileID: 8188215969597829879}
+  _soundSettingsUI:
+  - {fileID: 2253788234141689077}
+  - {fileID: 4993667353089516505}
+  _controlSettingsUI: {fileID: 7166231828018871619}
+  _settingsSections:
+  - Category: 0
+    Button: {fileID: 4664129777451522065}
+    Label: {fileID: 2251606548104822810}
+    Panel: {fileID: 197413632979189090}
+    LabelName: "\u042D\u043A\u0440\u0430\u043D"
+  - Category: 1
+    Button: {fileID: 2703877790819878321}
+    Label: {fileID: 496984050642726938}
+    Panel: {fileID: 4557533094847117134}
+    LabelName: "\u0413\u0440\u0430\u0444\u0438\u043A\u0430"
+  - Category: 2
+    Button: {fileID: 8022623733346232826}
+    Label: {fileID: 7086718034528297492}
+    Panel: {fileID: 7749113472954809612}
+    LabelName: "\u0417\u0432\u0443\u043A"
+  - Category: 3
+    Button: {fileID: 5109890056114547896}
+    Label: {fileID: 1181840481103003865}
+    Panel: {fileID: 1633206921300811458}
+    LabelName: "\u0423\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435"
 --- !u!1 &2326237021772514286
 GameObject:
   m_ObjectHideFlags: 0
