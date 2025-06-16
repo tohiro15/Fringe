@@ -339,8 +339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d28a112947bd144abd2ab9d08a1b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
   _audioSource: {fileID: 5581679461712946286}
+  _type: 0
+  type: 1
   _openAngle: 90
   _openSpeed: 10
 --- !u!33 &1660513695170478013

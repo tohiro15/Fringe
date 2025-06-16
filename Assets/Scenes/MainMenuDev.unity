@@ -6004,6 +6004,11 @@ PrefabInstance:
       propertyPath: m_LODs.Array.data[2].renderers.Array.data[0].renderer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4343007196669796322, guid: 9134b5b5411d3cf47a34173ba6e21a1e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8327633139607555494, guid: 9134b5b5411d3cf47a34173ba6e21a1e,
         type: 3}
       propertyPath: m_Name

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -72,12 +73,14 @@ public class SettingsManager : MonoBehaviour
         Resolution[] resolutions = Screen.resolutions;
         if (index < resolutions.Length)
         {
+            _currentResolutionIndex = index;
             Resolution res = resolutions[index];
-            Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+            Screen.SetResolution(res.width, res.height, !_windowMode);
         }
 
         IsChanged = true;
     }
+
 
     public int GetResolution()
     {
@@ -194,6 +197,7 @@ public class SettingsManager : MonoBehaviour
 
         PlayerPrefs.SetInt("Resolution", _currentResolutionIndex);
         PlayerPrefs.SetInt("Quality", _currentQualityLevel);
+        PlayerPrefs.SetInt("WindowMode", _windowMode ? 1 : 0);
         PlayerPrefs.SetFloat("SFXVolume", _currentSFXVolume);
         PlayerPrefs.SetFloat("MusicVolume", _currentMusicVolume);
         PlayerPrefs.SetFloat("Sensitivity", _mouseSensitivity);
@@ -205,20 +209,36 @@ public class SettingsManager : MonoBehaviour
 
     public void LoadSettings()
     {
-        _currentResolutionIndex = PlayerPrefs.GetInt("Resolution");
+        _windowMode = PlayerPrefs.GetInt("WindowMode", 0) == 1;
+        Screen.fullScreen = !_windowMode;
+
+        if (PlayerPrefs.HasKey("Resolution"))
+        {
+            _currentResolutionIndex = PlayerPrefs.GetInt("Resolution");
+        }
+        else
+        {
+            GetCurrentResolution();
+            PlayerPrefs.SetInt("Resolution", _currentResolutionIndex);
+        }
         ChangeResolution(_currentResolutionIndex);
-        _currentQualityLevel = PlayerPrefs.GetInt("Quality");
+
+        _currentQualityLevel = PlayerPrefs.GetInt("Quality", QualitySettings.names.Length - 1);
         ChangeQuality(_currentQualityLevel);
 
         _currentSFXVolume = PlayerPrefs.GetFloat("SFXVolume", 100f);
         ChangeSFXVolume(_currentSFXVolume);
+
         _currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 100f);
         ChangeMusicVolume(_currentMusicVolume);
 
-        _mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 100f);
+        _mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 10f);
         ChangeSensitivity(_mouseSensitivity);
 
+        PlayerPrefs.Save();
         IsChanged = false;
     }
+
+
 
 }
