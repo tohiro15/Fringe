@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class SingleHingedDoor : DoorBase
 {
-    [SerializeField] private DoorType type = DoorType.SingleHindedDoor;
-
     [SerializeField] private float _openAngle = 90f;
     [SerializeField] private float _openSpeed = 10f;
 
@@ -12,6 +10,7 @@ public class SingleHingedDoor : DoorBase
 
     private void Start()
     {
+        _type = DoorType.SingleHindedDoor;
         _closedRotation = transform.rotation;
         _targetRotation = _closedRotation;
     }
@@ -22,7 +21,7 @@ public class SingleHingedDoor : DoorBase
         float angle = _isOpen ? _openAngle : 0f;
         _targetRotation = Quaternion.Euler(0, angle, 0) * _closedRotation;
 
-        SoundManager.Instance.PlayDoorSound(type, _isOpen, _audioSource);
+        SoundManager.Instance.PlayDoorSound(_type, _isOpen, _audioSource);
     }
 
     private void Update()
