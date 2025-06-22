@@ -12099,7 +12099,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 173467410130487672}
   _type: 0
-  type: 1
   _openAngle: -90
   _openSpeed: 10
 --- !u!33 &27332363247834203
@@ -28491,7 +28490,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 2569307718821272157}
   _type: 0
-  type: 1
   _openAngle: 90
   _openSpeed: 10
 --- !u!33 &2111410351392147866
