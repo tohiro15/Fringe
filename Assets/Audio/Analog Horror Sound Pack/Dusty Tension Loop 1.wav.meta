@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 77a51de4f5d9b4be4a87643b70810fae
+AssetOrigin:
+  serializedVersion: 1
+  productId: 314658
+  packageName: Analog Horror Sound Pack
+  packageVersion: 1.0
+  assetPath: Assets/Analog Horror Sound Pack/Dusty Tension Loop 1.wav
+  uploadId: 742640
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8
@@ -12,7 +19,16 @@ AudioImporter:
     quality: 1
     conversionMode: 0
     preloadAudioData: 0
-  platformSettingOverrides: {}
+  platformSettingOverrides:
+    Standalone:
+      serializedVersion: 2
+      loadType: 2
+      sampleRateSetting: 0
+      sampleRateOverride: 44100
+      compressionFormat: 1
+      quality: 0.5
+      conversionMode: 0
+      preloadAudioData: 0
   forceToMono: 0
   normalize: 1
   loadInBackground: 0
@@ -21,10 +37,3 @@ AudioImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 314658
-  packageName: Analog Horror Sound Pack
-  packageVersion: 1.0
-  assetPath: Assets/Analog Horror Sound Pack/Dusty Tension Loop 1.wav
-  uploadId: 742640
