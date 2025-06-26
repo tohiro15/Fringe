@@ -14274,10 +14274,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 2
-  MaxDistance: 10
+  MinDistance: 5
+  MaxDistance: 15
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -14310,7 +14310,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -14367,11 +14367,11 @@ MonoBehaviour:
   perspectiveCorrection: 0
   distanceAttenuation: 1
   distanceAttenuationInput: 1
-  distanceAttenuationValue: 0.14510514
+  distanceAttenuationValue: 0.3552734
   airAbsorption: 1
   airAbsorptionInput: 1
-  airAbsorptionLow: 0.105
-  airAbsorptionMid: 0.519
+  airAbsorptionLow: 1
+  airAbsorptionMid: 1
   airAbsorptionHigh: 1
   directivity: 0
   directivityInput: 0
@@ -14810,7 +14810,7 @@ Transform:
   m_GameObject: {fileID: 2132268290}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.357, y: 0.129, z: -1.672}
+  m_LocalPosition: {x: -0.409, y: 0.129, z: -0.562}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
