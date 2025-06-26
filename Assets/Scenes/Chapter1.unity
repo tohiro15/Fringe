@@ -1968,17 +1968,17 @@ PrefabInstance:
     - target: {fileID: 41773970823808321, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.915
+      value: 7.577
       objectReference: {fileID: 0}
     - target: {fileID: 41773970823808321, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.38
+      value: 0.404
       objectReference: {fileID: 0}
     - target: {fileID: 41773970823808321, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.11
+      value: -4.935
       objectReference: {fileID: 0}
     - target: {fileID: 41773970823808321, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
         type: 3}
@@ -2019,6 +2019,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gr_Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626926240312055594, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626926240312055594, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626926240312055594, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: 8626926240312055594, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
         type: 3}
@@ -4918,13 +4933,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742166506}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.18, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1907160911}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!82 &742166508
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12248,17 +12263,17 @@ PrefabInstance:
     - target: {fileID: 41773970823808321, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.418
+      value: 3.225
       objectReference: {fileID: 0}
     - target: {fileID: 41773970823808321, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.38
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 41773970823808321, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.261
+      value: 1.926
       objectReference: {fileID: 0}
     - target: {fileID: 41773970823808321, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
         type: 3}
@@ -12299,6 +12314,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gr_Door (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626926240312055594, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626926240312055594, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626926240312055594, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8626926240312055594, guid: 9254e4bbbc0ddc648bfe5b682f6c9110,
         type: 3}
