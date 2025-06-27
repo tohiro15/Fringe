@@ -433,7 +433,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gr_Door (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2631133551766648504, guid: 9254e4bbbc0ddc648bfe5b682f6c9110, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1608,7 +1609,7 @@ GameObject:
   - component: {fileID: 229869715}
   - component: {fileID: 229869714}
   m_Layer: 0
-  m_Name: CinemachineCamera (2)
+  m_Name: CutsceneCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
