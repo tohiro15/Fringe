@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 682546031630560974}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,14 +59,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237872801544782793}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5134664, y: 0, z: 0, w: 0.85810965}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1038490860973289719}
   m_Father: {fileID: 8130701495991424515}
-  m_LocalEulerAnglesHint: {x: 61.79, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2723691202150675020
 Camera:
   m_ObjectHideFlags: 0
@@ -484,7 +484,6 @@ GameObject:
   - component: {fileID: 6333189732172528559}
   - component: {fileID: 8574908377720213512}
   - component: {fileID: 3471536571903059026}
-  - component: {fileID: 4583297076473336785}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -615,28 +614,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!95 &4583297076473336785
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890435818913106974}
-  m_Enabled: 0
-  m_Avatar: {fileID: 9000000, guid: fbc57daaab829f34a8d9f70fd81f9cb1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 781708e628f9b37419545c3c7047a59b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &917183604804531762
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +721,7 @@ GameObject:
   - component: {fileID: 7075570671541516616}
   m_Layer: 3
   m_Name: Beta_Surface
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1604,7 +1581,7 @@ GameObject:
   - component: {fileID: 2712485233013174607}
   m_Layer: 3
   m_Name: Beta_Joints
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1889,7 +1866,7 @@ GameObject:
   - component: {fileID: 3263674814055072688}
   m_Layer: 3
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2098,7 +2075,7 @@ GameObject:
   - component: {fileID: 6428367301064019479}
   m_Layer: 0
   m_Name: HeadCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2711,7 +2688,7 @@ GameObject:
   - component: {fileID: 3309793016064721903}
   m_Layer: 0
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2959,7 +2936,7 @@ GameObject:
   - component: {fileID: 1140109870983872104}
   m_Layer: 3
   m_Name: mixamorig:Hips
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
