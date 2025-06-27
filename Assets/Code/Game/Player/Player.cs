@@ -169,5 +169,14 @@ public class Player : MonoBehaviour
             }
         }
     }
+    
+    public void EnterCutsceneMode()
+    {
+        SettingsManager.Instance.GetInputActionsAsset().FindActionMap("Player")?.Disable();
+    }
 
+    public void ExitCutsceneMode()
+    {
+        SettingsManager.Instance.GetInputActionsAsset().FindActionMap("Player")?.Enable();
+    }
 }

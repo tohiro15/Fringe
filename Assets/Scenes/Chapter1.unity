@@ -1598,28 +1598,17 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 2016030492}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &229869713
+--- !u!1 &229869713 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3525607714095877196, guid: ec89c4fb4735fd245b6041ffddee76dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 627250340}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 229869715}
-  - component: {fileID: 229869714}
-  m_Layer: 0
-  m_Name: CutsceneCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &229869714
+--- !u!114 &229869714 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4702491219455464209, guid: ec89c4fb4735fd245b6041ffddee76dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 627250340}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229869713}
   m_Enabled: 1
@@ -1627,52 +1616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Priority:
-    Enabled: 0
-    m_Value: 0
-  OutputChannel: 1
-  StandbyUpdate: 2
-  m_StreamingVersion: 20241001
-  m_LegacyPriority: 0
-  Target:
-    TrackingTarget: {fileID: 0}
-    LookAtTarget: {fileID: 0}
-    CustomLookAtTarget: 0
-  Lens:
-    FieldOfView: 60.000004
-    OrthographicSize: 5
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
-    Dutch: 0
-    ModeOverride: 0
-    PhysicalProperties:
-      GateFit: 2
-      SensorSize: {x: 21.946, y: 16.002}
-      LensShift: {x: 0, y: 0}
-      FocusDistance: 10
-      Iso: 200
-      ShutterSpeed: 0.005
-      Aperture: 16
-      BladeCount: 5
-      Curvature: {x: 2, y: 11}
-      BarrelClipping: 0.25
-      Anamorphism: 0
-  BlendHint: 0
---- !u!4 &229869715
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 229869713}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.55, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1617779209}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &236801509
 GameObject:
   m_ObjectHideFlags: 0
@@ -4263,40 +4206,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4941842462188145183, guid: ec89c4fb4735fd245b6041ffddee76dc,
+    - target: {fileID: 1538708310820953960, guid: ec89c4fb4735fd245b6041ffddee76dc,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnterCutsceneMode
       objectReference: {fileID: 0}
-    - target: {fileID: 4941842462188145183, guid: ec89c4fb4735fd245b6041ffddee76dc,
+    - target: {fileID: 1538708310820953960, guid: ec89c4fb4735fd245b6041ffddee76dc,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941842462188145183, guid: ec89c4fb4735fd245b6041ffddee76dc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941842462188145183, guid: ec89c4fb4735fd245b6041ffddee76dc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941842462188145183, guid: ec89c4fb4735fd245b6041ffddee76dc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941842462188145183, guid: ec89c4fb4735fd245b6041ffddee76dc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4941842462188145183, guid: ec89c4fb4735fd245b6041ffddee76dc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
+      propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitCutsceneMode
       objectReference: {fileID: 0}
     - target: {fileID: 8130701495991424515, guid: ec89c4fb4735fd245b6041ffddee76dc,
         type: 3}
@@ -4350,11 +4268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8130701495991424515, guid: ec89c4fb4735fd245b6041ffddee76dc,
-        type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 229869715}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec89c4fb4735fd245b6041ffddee76dc, type: 3}
 --- !u!1 &638657282
@@ -11102,12 +11016,18 @@ Canvas:
     type: 3}
   m_PrefabInstance: {fileID: 1595776177}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1617779209 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8130701495991424515, guid: ec89c4fb4735fd245b6041ffddee76dc,
+--- !u!114 &1617779210 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1538708310820953960, guid: ec89c4fb4735fd245b6041ffddee76dc,
     type: 3}
   m_PrefabInstance: {fileID: 627250340}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1625314642
 GameObject:
   m_ObjectHideFlags: 0
@@ -13645,6 +13565,8 @@ PlayableDirector:
     value: {fileID: 5536778728884945103}
   - key: {fileID: -1522222827368766947, guid: ab3495b79415fe148ab433273cc2630d, type: 2}
     value: {fileID: 5536778728884945103}
+  - key: {fileID: -2130755852925784561, guid: ab3495b79415fe148ab433273cc2630d, type: 2}
+    value: {fileID: 1617779210}
   m_ExposedReferences:
     m_References:
     - 41ecbbcd14a87144ba5b135eeaef5a32: {fileID: 229869714}
