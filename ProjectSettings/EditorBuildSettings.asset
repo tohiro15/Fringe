@@ -12,14 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadingScene.unity
     guid: 0def3b56595078f4e9c45b0fa1aa8404
   - enabled: 1
-    path: Assets/Scenes/DevelopmentScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
     path: Assets/Scenes/Chapter1.unity
-    guid: 4b4339cc3977d014a80de725d65e6702
-  - enabled: 1
-    path: Assets/Scenes/CutScene.unity
-    guid: 6200466eb646ab146a294598c69c7447
+    guid: 549537e82defc024ba76898b78654f7b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1379a4e46fd424346b30f0eca12aef7d,
       type: 2}

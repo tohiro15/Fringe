@@ -232,7 +232,7 @@ public class SettingsManager : MonoBehaviour
         _currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 100f);
         ChangeMusicVolume(_currentMusicVolume);
 
-        _mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 10f);
+        _mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 100f);
         ChangeSensitivity(_mouseSensitivity);
 
         PlayerPrefs.Save();

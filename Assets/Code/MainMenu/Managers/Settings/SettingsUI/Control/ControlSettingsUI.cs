@@ -22,7 +22,7 @@ public class ControlSettingsUI : MonoBehaviour
         UpdateControlLabel(sliderValue);
     }
 
-    private void UpdateControlLabel(float sliderValue)
+    public void UpdateControlLabel(float sliderValue)
     {
         _sensitivityText.text = $"Чувствительность: {sliderValue:F0}";
     }
