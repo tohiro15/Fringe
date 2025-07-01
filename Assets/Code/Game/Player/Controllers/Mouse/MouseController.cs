@@ -26,8 +26,11 @@ public class MouseController : MonoBehaviour, IRotatable
 
         _lookAmt = _lookAction.ReadValue<Vector2>();
 
-        _mouseX = _lookAmt.x * SettingsManager.Instance.GetSensitivity() * Time.deltaTime;
-        _mouseY = _lookAmt.y * SettingsManager.Instance.GetSensitivity() * Time.deltaTime;
+        //_mouseX = _lookAmt.x * SettingsManager.Instance.GetSensitivity() * Time.deltaTime;
+        //_mouseY = _lookAmt.y * SettingsManager.Instance.GetSensitivity() * Time.deltaTime;
+
+        _mouseX = _lookAmt.x * 25 * Time.deltaTime;
+        _mouseY = _lookAmt.y * 25 * Time.deltaTime;
     }
 
 
